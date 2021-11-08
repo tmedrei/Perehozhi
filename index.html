@@ -83,7 +83,7 @@ let Perk7 = 0;
 
 let O1 = 0;
 let O2 = 0;
-let O3 = 0;
+let O3 = 1;
 let O4 = 0;
 let O5 = 0;
 let O6 = 0;
@@ -307,7 +307,7 @@ M--;
 Моторика: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="button" value="-" name="hello" OnClick="Mminus();"> <input type="button" value="+" name="hello" OnClick="Mplus();"> Определяет ловкость ваших рук при взломе замков, лечении и использовании огнестрельного оружия.<br><br>
 Скрытность: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="button" value="-" name="hello" OnClick="Sminus();"> <input type="button" value="+" name="hello" OnClick="Splus();"> Определяет вероятность не быть замеченным врагами и шанс скрытной атаки.<br><br>
 Убедительность: <input type="button" value="-" name="hello" OnClick="Uminus();"> <input type="button" value="+" name="hello" OnClick="Uplus();">  Определяет расположение к вам других людей.<br><br>
-<hr><strong>Особенности персонажа:</strong><br><br><input type="button" value="Мародёр" name="hello" OnClick="P1ch();"> <input type="button" value="Здоровый" name="hello" OnClick="P2ch();"> <input type="button" value="Гроза мутантов" name="hello" OnClick="P3ch();"> <input type="button" value="Вероломный" name="hello" OnClick="P4ch();"> <input type="button" value="Затворник" name="hello" OnClick="P5ch();"> <input type="button" value="Осознанный" name="hello" OnClick="P6ch();"> <input type="button" value="Из пробирки" name="hello" OnClick="P7ch();"><br><br><strong>Особенности местности:</strong><br><br><input type="button" value="В долгую" name="hello" OnClick="Osob(1);">`);
+<hr><strong>Особенности персонажа:</strong><br><br><input type="button" value="Мародёр" name="hello" OnClick="P1ch();"> <input type="button" value="Здоровый" name="hello" OnClick="P2ch();"> <input type="button" value="Гроза мутантов" name="hello" OnClick="P3ch();"> <input type="button" value="Вероломный" name="hello" OnClick="P4ch();"> <input type="button" value="Затворник" name="hello" OnClick="P5ch();"> <input type="button" value="Осознанный" name="hello" OnClick="P6ch();"> <input type="button" value="Из пробирки" name="hello" OnClick="P7ch();"><br><br><strong>Особенности местности:</strong><br><br><input type="button" value="В долгую" name="hello" OnClick="Osob(1);"> <input type="button" value="С Новым Циклом!" name="hello" OnClick="Osob(2);"> <input type="button" value="Целина" name="hello" OnClick="Osob(3);">`);
 preupdate();
 
 };
@@ -407,11 +407,19 @@ function Osob(number) {
  if (number == 1) {
   O1 = 10;
   O2 = 0;
+  O3 = 1;
   opisanie2 = '<strong>В долгую:</strong> Самосбор в вашей части Гигахруща – довольно редкое явление, но если уж зарядит, то длиться будет будь здоров! Вероятность самосбора снижена в 3 раза, но его длительность увеличена в столько же.';
  } else if (number == 2) {
   O1 = 0;
   O2 = 1;
+  O3 = 1;
   opisanie2 = '<strong>С Новым Циклом!</strong> Вам посчастливилось начать своё путешествие накануне празднования Нового Цикла. Все антресоли, шкафы и сейфы под завязку набиты этанолом!';
+ } else if (number == 3) {
+  O1 = 0;
+  O2 = 0;
+  O3 = 10;
+  opisanie2 = '<strong>Целина:</strong> Местность пуста и малозаселена. Расстояния от одного блока до другого могут составлять несколько километров';
+
  } else {
  };
  preupdate();
@@ -745,7 +753,7 @@ function b() {
   }else{
   };
   protivnikxp = 0;
-  let put = getRndInteger(10, 100);
+  let put = getRndInteger(10*O3, 100*O3);
   days = days+put*0.00005;
    day = Math.trunc(days);
    metr+=put;
@@ -1701,7 +1709,7 @@ function b() {
      Variant1 = '1. Пойти дальше';
 
   } else if (action == 18 && podaction == 18.4) {
-   let protivnikxp = 50;
+   protivnikxp = 50;
    podaction = 18.41;
     Show('Вы зашли внутрь того, что когда-то было жилой ячейкой. Внутри находились существа, которые весьма отдалённо напоминают людей.<br><br><strong>Мутант: </strong>Тебя ещё не поцеловал Чернобог. Зачем пожаловал к нам?');
     Variant1 = '1. На самом деле, поцеловал. Просто мои... Изменения, они внутри меня. А внешняя оболочка сохранилась прежней.';
@@ -1736,6 +1744,7 @@ function b() {
     Variant1 = '1. Вернуться';
 
   } else if (action == 18 && podaction == 18.8) {
+   protivnikxp = 50;
    ver = getRndInteger(1, 20);
    if (ver < S+M) {
     Show('Вам удалось незаметно вытащить рукопись!');
@@ -2943,6 +2952,7 @@ function c() {
        Show('Мутировавшая тварь корчится в агонии и умирает.');
        Variant1 = '1. Пойти дальше';
        Variant2 = '2. Осмотреть помещения';
+       Variant2 = '3. Воспользоваться лабораторией';
        action = 11;
        podaction = 0;
       };
@@ -3350,7 +3360,7 @@ function c() {
    let protivnikxp = 50;
    if (S > 7) {
     podaction = 18.8;
-    Show('Вы незаметно зашли того, что когда-то было жилой ячейкой. Внутри находились существа, которые весьма отдалённо напоминают людей.<br><br><strong>Мутант: </strong>Итак, давайте обсудим наши текущие дела...<br><br>Вы увидели, что у одного из мутантов внутри балахона торчит искомая рукопись.');
+    Show('Вы незаметно зашли в то, что когда-то было жилой ячейкой. Внутри находились существа, которые весьма отдалённо напоминают людей.<br><br><strong>Мутант: </strong>Итак, давайте обсудим наши текущие дела...<br><br>Вы увидели, что у одного из мутантов внутри балахона торчит искомая рукопись.');
     if (Perk5 > 0) {
      Variant1 = `1. Выкрасть рукопись (шанс ${(S+M)/0.2}%)`;
     } else {
@@ -3366,6 +3376,7 @@ function c() {
     b();
    };
   } else if (podaction == 18.41 || podaction == 18.8) {
+    protivnikxp = 50;
     podaction = 18.9;
     Show('<strong>Одноглазый мутант: </strong>Что ты делаешь, дуралей?');
     Variant1 = '';
@@ -3607,7 +3618,7 @@ function c() {
     podaction = 23.2;
     Variant1 = '1. Повторяю, самосбор окончен. Посмотрите на индикатор, встроенный в гермодверь!';
     Variant2 = '2. Со мной рядом находится ваша внучка. Спросите то, что может знать только она.';
-    Variant3 = '3. Вы хотите сотаться без гермодвери? Что-то мне подсказывает, что нет. Открывайте, или я её выломаю!';
+    Variant3 = '3. Вы хотите остаться без гермодвери? Что-то мне подсказывает, что нет. Открывайте, или я её выломаю!';
     Variant4 = '4. Ну приоткройте хотя бы щёлочку, чтобы убедиться: я не представляю для вас вреда.';
 
    } else {
@@ -4312,7 +4323,7 @@ function d() {
   } else if (action == 23 && podaction == 23.1) {
     kod = getRndInteger(1, 2100000-M*200000);
    podaction = 23.11;
-   Show('Вы подошли к прочной гермодвери. Рядом желали брошенные перчатки и лом<br><br><strong>Тян:</strong> Это ликвидаторы. Пытались выломать, ничего не помогло. Герма-то старая, прочная.<br><br><strong>Старческий голос:</strong> Кто? Кто там? Я слышу ваши голоса, выродки!');
+   Show('Вы подошли к прочной гермодвери. Рядом лежали брошенные перчатки и лом<br><br><strong>Тян:</strong> Это ликвидаторы. Пытались выломать, ничего не помогло. Герма-то старая, прочная.<br><br><strong>Старческий голос:</strong> Кто? Кто там? Я слышу ваши голоса, выродки!');
    Variant1 = '1. Попробовать выломать дверь ломом';    
    Variant2 = '2. "Самосбор окончен. Откройте дверь, пожалуйста!"';
    Variant3 = '3. Попробовать взломать замок';
@@ -4714,6 +4725,7 @@ function e() {
      };
     } else if (otvet == kod) {
      podaction = 0;
+     exp+=40;
      Variant4 = '';
      Show('Дверь разблокирована! Вы ворвались в склад оружия и с силой дёрнули излучатель. Теперь он не представляет опасности.<br><br>Оглядевшись по сторонам, вы с сожалением заметили, что большую часть оборудования уже давно вынесли или разграбили');
      if (ver == 1) {
@@ -5725,16 +5737,16 @@ function update() {
    attack = getRndInteger(A, A+Perk2);
   } else if (gun == 'Ржавый огнемёт') {
    VesGun = 10-M6*5;
-   attack = getRndInteger(0, 10+Perk5)+M;
+   attack = getRndInteger(0+Math.trunc(M/2), 10+Perk5);
   } else if (gun == 'Огнемёт') {
    VesGun = 10-M6*5;
-   attack = getRndInteger(5, 15+Perk5)+M;
+   attack = getRndInteger(5+Math.trunc(M/2), 15+Perk5);
   } else if (gun == 'Проржавевшие гравижернова') {
    VesGun = 15-M6*7;
-   attack = getRndInteger(0, 35+Perk5*3)+M;
+   attack = getRndInteger(0+Math.trunc(M/2), 35+Perk5*3);
   } else if (gun == 'Гравижернова') {
    VesGun = 15-M6*7;
-   attack = getRndInteger(10, 50+Perk5*5)+M;
+   attack = getRndInteger(10+Math.trunc(M/2), 50+Perk5*5);
   } else if (gun == 'Серп и молот') {
    VesGun = 10;
    attack = getRndInteger(A, A*X+Perk2);
@@ -5879,7 +5891,7 @@ function Krita() {
  if (protivnikxp > 0 && Krit == KritMax) {
   protivnikxp-=Krit;
   Show(`По противнику нанесён критический урон, он теряет ${Krit} здоровья!`);
-  Krit=0;
+  Krit-=KritMax*2;
   KKK='';
  } else {
  };
@@ -6080,7 +6092,10 @@ function ChangeOdezh() {
  } else {
  };
  xpMax = 25+5*X-Perk4*2;
- xp=xpMax
+ if (xp > xpMax) {
+  xp=xpMax;
+ } else {
+ };
  vesMax = 5+5*E-Perk1*2;
 update();
 };
@@ -6158,6 +6173,10 @@ function NoOdezh() {
  } else {
  };
  xpMax = 25+5*X-Perk4*2;
+ if (xp > xpMax) {
+  xp=xpMax;
+ } else {
+ };
  vesMax = 5+5*E-Perk1*2;
  odezhda = '';
 update();
