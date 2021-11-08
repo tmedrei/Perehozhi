@@ -753,7 +753,7 @@ function b() {
   }else{
   };
   protivnikxp = 0;
-  let put = getRndInteger(65*65*O3, 65*65*O3);
+  let put = getRndInteger(10*O3, 100*O3);
   days = days+put*0.00005;
    day = Math.trunc(days);
    metr+=put;
@@ -902,7 +902,7 @@ function b() {
    } else {
    };
    
-  action = getRndInteger(65, Math.trunc(Math.sqrt(metr)));
+  action = getRndInteger(1, Math.trunc(Math.sqrt(metr)));
    if (action == prezh) {
     action = 0;
     b();
