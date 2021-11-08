@@ -753,7 +753,7 @@ function b() {
   }else{
   };
   protivnikxp = 0;
-  let put = getRndInteger(10*O3, 100*O3);
+  let put = getRndInteger(65*65*O3, 65*65*O3);
   days = days+put*0.00005;
    day = Math.trunc(days);
    metr+=put;
@@ -902,7 +902,7 @@ function b() {
    } else {
    };
    
-  action = getRndInteger(1, Math.trunc(Math.sqrt(metr)));
+  action = getRndInteger(65, Math.trunc(Math.sqrt(metr)));
    if (action == prezh) {
     action = 0;
     b();
@@ -1006,12 +1006,12 @@ function b() {
     Variant4 = '';
     Variant5 = '';
 
-   } else if (action == 10 && O1 == 0 || action == 60) {
+   } else if (action == 30 && O1 == 0 || action == 60) {
     if (S8 > 0) {
      alert('Датчик самосбора неистово пищит.');
     }else{
     };
-    action = 10;   
+    action = 30;   
     vrema = E+E6*5;
     ver = getRndInteger(1, 3);
     if (ver == 1) {
@@ -1086,7 +1086,7 @@ function b() {
     prezh = action;
     Show('Под тусклой лампой сидит одинокий бомж.<br><br><strong>Бомж:</strong> Эй, слышь, талончика лишнего... Не найдётся? Поделись, милчеловек! А я тебе расскажу свою историю.');
     Variant1 = '1. Пойти дальше';
-    Variant2 = '2. Вот, держи (1 талон)';
+    Variant2 = '2. Вот, держи [1 талон]';
     Variant3 = '';
     Variant4 = '';
     Variant5 = '';
@@ -1094,7 +1094,7 @@ function b() {
 
    } else if (action == 16) {
     prezh = action;
-    Show('Вы проходите через жилой блок, стараясь не привлекать к себе внимания, но вас останавливает хмурый человек в кожаном пальто.<br><br><strong>Торговец:</strong> Хей, путешественник! Не хочешь унести с собой немного счастья? Красного, тягучено счастья?');
+    Show('Вы проходите через жилой блок, стараясь не привлекать к себе внимания, но вас останавливает хмурый человек в кожаном пальто.<br><br><strong>Торговец:</strong> Хей, путешественник! Не хочешь унести с собой немного счастья? Красного, тягучего счастья?');
     Variant1 = '1. Пойти дальше';
     Variant2 = '2. Да, я хочу (-10 талонов)';
     Variant3 = '3. А что будет, если те замечательные люди с граблями узнают, чем ты тут занимаешься?';
@@ -1130,7 +1130,6 @@ function b() {
     Variant5 = '';
 
    } else if (action == 50) {
-    action = 20;
     prezh = action;
     protivnikxp = 50;
     Show('Вы остановились из-за яркого света в конце коридора. Приглядевшись, вы поняли, что это блокпост, через который вас могут не пропустить.');
@@ -1198,7 +1197,6 @@ function b() {
 
    } else if (action == 65) {
     prezh = action;
-    action = 25;
     ver = getRndInteger(1, 100);
     if (ver < 100-S*10) {
      Show('Вас выследил дикий охотник борщевод<br><br>Борщевод атакует вас');
@@ -1256,7 +1254,7 @@ function b() {
     Variant5 = '';
     kod = getRndInteger(1, 21000-M*2000);
 
-   } else if (action == 30) {
+   } else if (action == 40) {
     prezh = action;
     protivnikxp = 30;
     Show('Вы услышали звук стекающий вдалеке слизи и прижались к стене. На ваших глазах слизь стекла на бетонный пол и начала подниматься, образуя тело. Нет сомнений, на вашем пути растеклась жижа.');
@@ -1478,7 +1476,7 @@ function b() {
   
   action = 0;
    
-  } else if (action == 3 || action == 5 || action == 7 && podaction == 0 || action == 8 || action == 9 && podaction == 0 || action == 11 && podaction == 0 ||podaction == 12 || podaction == 13.1 || podaction == 14.95 || action == 15 && podaction == 0 || action == 16 && podaction == 0 || action == 17 && podaction == 0 || action == 28 && podaction == 0 || podaction == 28 || action == 18 && podaction < 18.3 || action == 19 || action == 29 && podaction == 0 || action == 20 && podaction == 20.1 || action == 21 && podaction == 0 || action == 30 && podaction == 30.1 || action == 22 && podaction == 22.9 || action == 24 && podaction == 0 || action >= 24.2 && action <= 24.7 || action == 25 && podaction == 25.5 || action == 26 && podaction == 0 || podaction == 26.3 || action == 31 || action == 33 && podaction != 33.1 || action == 34 && podaction == 0 || action == 35 && podaction == 0) {
+  } else if (action == 3 || action == 5 || action == 7 && podaction == 0 || action == 8 || action == 9 && podaction == 0 || action == 11 && podaction == 0 ||podaction == 12 || podaction == 13.1 || podaction == 14.95 || action == 15 && podaction == 0 || action == 16 && podaction == 0 || action == 17 && podaction == 0 || action == 28 && podaction == 0 || podaction == 28 || action == 18 && podaction < 18.3 || action == 19 || action == 29 && podaction == 0 || action == 50 && podaction == 50.1 || action == 21 && podaction == 0 || action == 40 && podaction == 40.1 || action == 22 && podaction == 22.9 || action == 24 && podaction == 0 || action >= 24.2 && action <= 24.7 || action == 65 && podaction == 65.5 || action == 26 && podaction == 0 || podaction == 26.3 || action == 31 || action == 33 && podaction != 33.1 || action == 34 && podaction == 0 || action == 35 && podaction == 0) {
    action = 0;
    podaction = 0;
    Variant1 = '';
@@ -1515,7 +1513,7 @@ function b() {
     podaction = 6;
    };
 
- } else if (action == 10) {
+ } else if (action == 30) {
    if (vrema > 0) {
     vrema--;
     ver = getRndInteger(1, 10);
@@ -1523,27 +1521,27 @@ function b() {
      Show('Вы видите жилъячейку с приоткрытой гермой');
      Variant1 = '1. Бежать дальше';
      Variant2 = '2. Бежать туда';
-     podaction = 10.1
+     podaction = 30.1
     } else if (ver == 2) {  
       Show('Вы видите жилъячейку с приоткрытой гермой'); 
       Variant1 = '1. Бежать дальше';
       Variant2 = '2. Бежать туда';
-     podaction = 10.2
+     podaction = 30.2
     } else if (ver == 3) {
      Show('Вы видите жилъячейку с приоткрытой гермой');  
      Variant1 = '1. Бежать дальше';
      Variant2 = '2. Бежать туда';
-     podaction = 10.2
+     podaction = 30.2
     } else if (ver == 4) {
      Show('Вы видите жилъячейку с приоткрытой гермой');
      Variant1 = '1. Бежать дальше';
      Variant2 = '2. Бежать туда';
-     podaction = 10.2
+     podaction = 30.2
     } else if (ver == 5) {
      Show('Вы видите жилъячейку с приоткрытой гермой');  
      Variant1 = '1. Бежать дальше';
      Variant2 = '2. Бежать туда';
-     podaction = 10.2
+     podaction = 30.2
     } else {
      Show('Поблизости нет ничего, что могло бы хоть отдалённо напоминать гермодверь.'); 
      Variant1 = '1. Бежать дальше';
@@ -1672,7 +1670,7 @@ function b() {
   } else {
     Show('Ликвидатор ударил граблями по вашему колену, после чего вы упали на бетонный пол.<br><br>Мысленно вы уже приготовились к многочасовым допросам и решили в последний раз вдохнуть воздух свободы<br><br>Но с воздухом было что-то не так.<br><br>Врубилась сирена. Ликвидаторы всполошились и убежали. Коридоры медленно заполняются фиолетовой дымкой.<br><br>Вы кое-как встали на ноги. Что это, спасение или погибель? Скоро будет ясно.');
     xp-=2;
-    action = 10;
+    action = 30;
     podaction = 0;
      Variant1 = '1. Бежать';
      Variant2 = '';
@@ -1772,7 +1770,7 @@ function b() {
     podaction = 0;
     Variant1 = '1. Пойти дальше';
 
-  } else if (action == 20 && podaction == 0) {
+  } else if (action == 50 && podaction == 0) {
    if (U>8) {
     Show('Ваш убедительный вид не вызвал у постовых никаких подозрений');
     action = 0;
@@ -1783,7 +1781,7 @@ function b() {
     Variant4 = '';
     Variant5 = '';
    } else {
-    podaction = 20;
+    podaction = 50;
     xp-=15;
     Show('Дежурный ликвидатор включил сирену и направил на вас струю огня.<br><br>');
     Variant1 = '';
@@ -1808,7 +1806,7 @@ function b() {
     Variant1 = '1. Пойти дальше.';
     Variant2 = '';
 
-  } else if (action == 30 && podaction != 30) {
+  } else if (action == 40 && podaction != 40) {
    ver = getRndInteger(1, 10);
    if (ver < S-4) {
     Show('Вам удалось проскочить мимо!'); 
@@ -1821,7 +1819,7 @@ function b() {
     xp -=20;
      Variant1 = '';
      Variant2 = '2. Атаковать';
-    podaction = 30;
+    podaction = 40;
    };
 
   } else if (action == 70 && podaction != 70) {
@@ -2097,7 +2095,7 @@ function c() {
       };
       if (protivnikxp > 0) {
        if (attack+Perk3+Perk4*S6 > 0) {
-        Show(`Улитка получает урон, у неё осатётся ${protivnikxp} здоровья.<br><br>Улитка кусает вас.`);
+        Show(`Улитка получает урон, у неё остаётся ${protivnikxp} здоровья.<br><br>Улитка кусает вас.`);
        } else {
         Show(`Улитка не получает никакого урона.<br><br>Улитка кусает вас.`);
        };
@@ -2186,7 +2184,7 @@ function c() {
       };
       if (protivnikxp > 0) {
        if (attack+Perk3+Perk4*S6 > 0) {
-        Show(`Грибной получает урон, у него осатётся ${protivnikxp} здоровья.<br><br>Грибной кусает вас.`);
+        Show(`Грибной получает урон, у него остаётся ${protivnikxp} здоровья.<br><br>Грибной кусает вас.`);
        } else {
         Show(`Грибной не получает никакого урона.<br><br>Грибной кусает вас.`);
        };
@@ -2294,7 +2292,7 @@ function c() {
     };
       if (protivnikxp > 0) {
        if (attack+Perk3 > 0) {
-        Show(`Червь-бетоноед получает урон, у него осатётся ${protivnikxp} здоровья.<br><br>Червь-бетоноед кусает вас.`);
+        Show(`Червь-бетоноед получает урон, у него остаётся ${protivnikxp} здоровья.<br><br>Червь-бетоноед кусает вас.`);
        } else {
         Show(`Червь-бетоноед не получает никакого урона.<br><br>Червь-бетоноед кусает вас.`);
        };
@@ -2404,7 +2402,7 @@ function c() {
     Variant2 = ''; 
     action = 0;
 
-   } else if (action == 20 && podaction == 0) {
+   } else if (action == 50 && podaction == 0) {
     ver = getRndInteger(1, 20);
    if (S+M >= ver) {
     Show('Система вышла из строя, блок обесточен. Вы можете прокрасться к выходу');
@@ -2417,7 +2415,7 @@ function c() {
     Variant5 = '';
     exp+=15;
    } else {
-    podaction = 20;
+    podaction = 50;
     xp-=15;
     Show('Дежурный ликвидатор включил сирену и направил на вас струю огня.');
     Variant1 = '';
@@ -2495,23 +2493,21 @@ function c() {
       Variant5 = '5. Продать';
       podaction = 24;
      } else {
-      action = 0;
       Show('<strong>Торговец:</strong> Я не буду торговать с тобой. Ты мне не нравишься.');
-      Variant1 = '1. Пойти дальше';
       Variant2 = '';
      };    
 
-  } else if (action == 25) {
+  } else if (action == 65) {
     if (attack+Perk3 > 0) {
      protivnikxp -= attack+Perk3;
     } else {
     };
       if (protivnikxp > 0) {
-       Show(`Дикий борщевод получает урон, у него осатётся ${protivnikxp} здоровья.<br><br>Дикий борщевод атакует вас.`);
-       protivnikAttack = getRndInteger(10, 17);
-       xp -= protivnikAttack;
+       Show(`Дикий борщевод получает урон, у него остаётся ${protivnikxp} здоровья.<br><br>Дикий борщевод атакует вас.`);
+        ver = getRndInteger(1, 5);
+        xp -= ver**2;
       if (protivnikxp < 31 && protivnikxp > 15) {
-       Show('<strong>Дикий борщевод:</strong> Твои кости... Станут моими трофеями!');
+        Show('<strong>Дикий борщевод:</strong> Твои кости... Станут моими трофеями!');
       } else {
       };
         
@@ -2532,8 +2528,8 @@ function c() {
        Show('Раненый борщевод попытался отползти от вас, но потеря крови была смертельной.<br><br>В его руке был зажат нож из клыка бетоноеда');
        Variant1 = '1. Пойти дальше';
        Variant2 = '2. Взять нож в качестве оружия';
-       action = 25;
-       podaction = 25;
+       action = 65;
+       podaction = 65;
       };
 
    } else if (action == 26) {
@@ -2577,8 +2573,8 @@ function c() {
    } else {
    };
 
-  } else if (action == 30) {
-   podaction = 30;
+  } else if (action == 40) {
+   podaction = 40;
    protivnikxp-=attack+Perk3+Perk4*S6;
    xp-=getRndInteger(10, 15);
    Show(`Жижа сморщилась от урона, у неё осталось ${protivnikxp} здоровья<br><br>Жижа атакует вас`);
@@ -2741,7 +2737,7 @@ function c() {
       protivnikAttack = getRndInteger(1, 10);      
       protivnikxp -= attack+Perk3;
       if (protivnikxp > 0) {
-       Show(`Грибной получает урон, у него осатётся ${protivnikxp} здоровья.<br><br>Грибной кусает вас.`);
+       Show(`Грибной получает урон, у него остаётся ${protivnikxp} здоровья.<br><br>Грибной кусает вас.`);
        xp -= protivnikAttack;
         
         if (xp <= 0) {
@@ -2767,7 +2763,7 @@ function c() {
   } else if (podaction == 7) {
      protivnikxp -= attack+Perk3;
       if (protivnikxp > 0) {
-       Show(`Лифтовая арахна получает урон, у неё осатётся ${protivnikxp} здоровья.<br><br>Лифтовая арахна кусает вас.`);
+       Show(`Лифтовая арахна получает урон, у неё остаётся ${protivnikxp} здоровья.<br><br>Лифтовая арахна кусает вас.`);
        xp -= protivnikAttack;
         
         if (xp <= 0) {
@@ -2880,7 +2876,7 @@ function c() {
     protivnikAttack = getRndInteger(1, 10);      
      protivnikxp -= attack+Perk3;
       if (protivnikxp > 0) {
-       Show(`Мутировавшая тварь получает урон, у неё осатётся ${protivnikxp} здоровья.<br><br>Мутировавшая тварь атакует вас.`);
+       Show(`Мутировавшая тварь получает урон, у неё остаётся ${protivnikxp} здоровья.<br><br>Мутировавшая тварь атакует вас.`);
        xp -= protivnikAttack;
         
         if (xp <= 0) {
@@ -2904,12 +2900,12 @@ function c() {
        podaction = 0;
       };
 
-  } else if (podaction == 10.1) {
+  } else if (podaction == 30.1) {
     Show('Эта гермодверь неисправна, нужно бежать дальше!');
     Variant2 = '';
     podaction = 0;
     vrema--;
-  } else if (podaction == 10.2) {
+  } else if (podaction == 30.2) {
     vrema = 0;
     Show('Вы резко захлопываете герму, проворачивая вентиль до упора.<br><br>Отдышавшись, вы поворачиваетесь, чтобы оглядеться. На вид обычная жилая ячейка.<br><br>Кто знает, сколько вам придётся тут жить?');
     Samosbor();
@@ -2920,9 +2916,9 @@ function c() {
      Variant3 = '3. Читать';
      Variant4 = '4. Осмотреть антресоль';
      Variant5 = '';
-     podaction = 10.21;
+     podaction = 30.21;
 
-  } else if (podaction == 10.21) {
+  } else if (podaction == 30.21) {
    son();
 
   } else if (podaction == 11) {
@@ -2932,7 +2928,7 @@ function c() {
     protivnikAttack = getRndInteger(1, 10);      
      protivnikxp -= attack+Perk3;
       if (protivnikxp > 0) {
-       Show(`Мутировавшая тварь получает урон, у неё осатётся ${protivnikxp} здоровья.<br><br>Мутировавшая тварь атакует вас.`);
+       Show(`Мутировавшая тварь получает урон, у неё остаётся ${protivnikxp} здоровья.<br><br>Мутировавшая тварь атакует вас.`);
        xp -= protivnikAttack;
         
         if (xp <= 0) {
@@ -2952,7 +2948,7 @@ function c() {
        Show('Мутировавшая тварь корчится в агонии и умирает.');
        Variant1 = '1. Пойти дальше';
        Variant2 = '2. Осмотреть помещения';
-       Variant2 = '3. Воспользоваться лабораторией';
+       Variant3 = '3. Воспользоваться лабораторией';
        action = 11;
        podaction = 0;
       };
@@ -3291,7 +3287,7 @@ function c() {
     protivnikAttack = getRndInteger(5, 10);      
      protivnikxp -= attack+Perk3;
       if (protivnikxp > 0) {
-       Show(`Человек получает урон, у него осатётся ${protivnikxp} здоровья.<br><br><strong>Человек:</strong> Во славу Чернобога!<br><br>Человек атакует вас.`);
+       Show(`Человек получает урон, у него остаётся ${protivnikxp} здоровья.<br><br><strong>Человек:</strong> Во славу Чернобога!<br><br>Человек атакует вас.`);
        xp -= protivnikAttack;
         
         if (xp <= 0) {
@@ -3357,7 +3353,7 @@ function c() {
    Variant4 = '';
 
   } else if (podaction == 18.4) {
-   let protivnikxp = 50;
+   protivnikxp = 50;
    if (S > 7) {
     podaction = 18.8;
     Show('Вы незаметно зашли в то, что когда-то было жилой ячейкой. Внутри находились существа, которые весьма отдалённо напоминают людей.<br><br><strong>Мутант: </strong>Итак, давайте обсудим наши текущие дела...<br><br>Вы увидели, что у одного из мутантов внутри балахона торчит искомая рукопись.');
@@ -3424,7 +3420,7 @@ function c() {
      protivnikAttack = getRndInteger(1, 10);      
       protivnikxp -= attack+Perk3;
        if (protivnikxp > 0) {
-        Show(`Грибной получает урон, у него осатётся ${protivnikxp} здоровья.<br><br>Грибной атакует вас.`);
+        Show(`Грибной получает урон, у него остаётся ${protivnikxp} здоровья.<br><br>Грибной атакует вас.`);
         xp -= protivnikAttack;
 
          if (xp <= 0) {
@@ -3452,7 +3448,7 @@ function c() {
      protivnikAttack = getRndInteger(10, 15);      
       protivnikxp -= attack+Perk3;
        if (protivnikxp > 0) {
-        Show(`Жижа получает урон, у неё осатётся ${protivnikxp} здоровья.<br><br>Жижа атакует вас.`);
+        Show(`Жижа получает урон, у неё остаётся ${protivnikxp} здоровья.<br><br>Жижа атакует вас.`);
         xp -= protivnikAttack;
         if (protivnikxp < 20 && protivnikxp > 10) {
          let ZHR = getRndInteger(1, 5);
@@ -3484,7 +3480,7 @@ function c() {
 
     };
 
-  } else if (podaction == 20) {
+  } else if (podaction == 50) {
       if (attack-Perk3 > 0) {
        protivnikxp-=attack-Perk3;
       } else {
@@ -3524,10 +3520,10 @@ function c() {
         Show('Ликвидатор умирает, роняя свой огнемёт.');
          Variant1 = '1. Идати дальше';
          Variant2 = '2. Подобрать огнемёт';
-         podaction = 20.1;
+         podaction = 50.1;
        };
 
-  } else if (podaction == 20.1) {
+  } else if (podaction == 50.1) {
    gun='Огнемёт';
    Variant2 = '';
    action = 0;
@@ -3556,7 +3552,7 @@ function c() {
      };
        if (protivnikxp > 0) {
         if (attack-Perk3 > 0) {
-         Show(`Руководитель получает урон, у него осатётся ${protivnikxp} здоровья.<br><br>Руководитель атакует вас.`);
+         Show(`Руководитель получает урон, у него остаётся ${protivnikxp} здоровья.<br><br>Руководитель атакует вас.`);
         } else {
          Show(`Руководитель не получает никакого урона.<br><br>Руководитель атакует вас.`);
         };
@@ -3672,9 +3668,9 @@ function c() {
     } else {
     };
 
-  } else if (podaction == 25) {
-   podaction = 25.5;
-  } else if (podaction == 25.5) {
+  } else if (podaction == 65) {
+   podaction = 65.5;
+  } else if (podaction == 65.5) {
    gun = 'Нож из клыка бетоноеда';
    action = 0;
    podaction = 0;
@@ -3871,11 +3867,11 @@ function c() {
     } else {
     };
 
-   } else if (podaction == 30) {
+   } else if (podaction == 40) {
      protivnikAttack = getRndInteger(10, 15);      
       protivnikxp -= attack+Perk3;
        if (protivnikxp > 0) {
-        Show(`Жижа получает урон, у неё осатётся ${protivnikxp} здоровья.<br><br>Жижа атакует вас.`);
+        Show(`Жижа получает урон, у неё остаётся ${protivnikxp} здоровья.<br><br>Жижа атакует вас.`);
         xp -= protivnikAttack;
         if (protivnikxp < 10 && protivnikxp > 5) {
          Show('Жижа пытается сформировать облик миловидной девушки, но растекается в лужу');
@@ -3902,7 +3898,7 @@ function c() {
         } else {
         };
         exp+=35;
-        podaction = 30.1;
+        podaction = 40.1;
         Show('Жижа разлетелась на сотни капель чёрной слизи.');
         Variant1 = '1. Пойти дальше';
         Variant2 = '3. Собрать слизь';
@@ -3911,7 +3907,7 @@ function c() {
    } else if (action == 32 && podaction == 32) {
     protivnikxp -= attack+Perk3;
     if (protivnikxp > 0) {
-     Show(`Порождение самосбора получает урон, у него осатётся ${protivnikxp} здоровья.<br><br>Порождение самосбора атакует вас.`);
+     Show(`Порождение самосбора получает урон, у него остаётся ${protivnikxp} здоровья.<br><br>Порождение самосбора атакует вас.`);
      if (Ataka1 >= Ataka2) {
       xp-=getRndInteger(Ataka1, Ataka2);
      } else {
@@ -3971,7 +3967,7 @@ Variant2 = '';
      };
        if (protivnikxp > 0) {
         if (attack-Perk3 > 0) {
-         Show(`Ликвидатор получает урон, у него осатётся ${protivnikxp} здоровья.<br><br>Ликвидатор огрел вас граблями.`);
+         Show(`Ликвидатор получает урон, у него остаётся ${protivnikxp} здоровья.<br><br>Ликвидатор огрел вас граблями.`);
         } else {
          Show(`Ликвидатор не получает никакого урона.<br><br>Ликвидатор огрел вас граблями.`);        
         };
@@ -4010,7 +4006,7 @@ Variant2 = '';
      protivnikAttack = getRndInteger(20, 30);      
       protivnikxp -= attack+Perk3;
        if (protivnikxp > 0) {
-        Show(`Белая жижа получает урон, у неё осатётся ${protivnikxp} здоровья.<br><br>Белая жижа атакует вас.`);
+        Show(`Белая жижа получает урон, у неё остаётся ${protivnikxp} здоровья.<br><br>Белая жижа атакует вас.`);
         xp -= protivnikAttack;
         if (protivnikxp < 10 && protivnikxp > 5) {
          Show('Жижа пытается сформировать облик миловидной девушки, но растекается в лужу');
@@ -4047,7 +4043,7 @@ Variant2 = '';
      protivnikAttack = getRndInteger(20, 50);      
       protivnikxp -= attack+Perk3;
        if (protivnikxp > 0) {
-        Show(`Ликвидатор пошатнулся, у него осатётся ${protivnikxp} здоровья.<br><br>Ликвидатор дезинтегрирует вас гравижерновами`);
+        Show(`Ликвидатор пошатнулся, у него остаётся ${protivnikxp} здоровья.<br><br>Ликвидатор дезинтегрирует вас гравижерновами`);
         xp -= protivnikAttack;
         if (protivnikxp <= 50 && protivnikxp > 20) {
          Show('Ликвидатор бросает в вас взрывчатку');
@@ -4158,7 +4154,7 @@ function d() {
 
  } else if (action == 8 && podaction >= 8 && podaction < 9) {
   store();
- } else if (action == 10 && podaction == 10.21) {
+ } else if (action == 30 && podaction == 30.21) {
    if (read == false) {
     reading();
    } else {
@@ -4290,7 +4286,7 @@ function d() {
     Variant5 = '';
    };
 
-   } else if (action == 20 && podaction == 0) {
+   } else if (action == 50 && podaction == 0) {
     ver = getRndInteger(1, 20);
    if (S+E >= ver) {
     Show('Вы даже не поняли, заметили ли вас, так быстро вы рванули к выходу. Вы бежали достаточно долго, чтобы убедиться в отсутствии преследования');
@@ -4303,7 +4299,7 @@ function d() {
     Variant5 = '';
     exp+=15;
    } else {
-    podaction = 20;
+    podaction = 50;
     xp-=15;
     Show('Дежурный ликвидатор включил сирену и направил на вас струю огня.');
     Variant1 = '';
@@ -4376,7 +4372,7 @@ function d() {
     Show('<strong>Нелюдь:</strong> Не спеши, не спеши, я так давно не видело настоящих людей. Я хочу понять. Я хочу прочувствовать вашу органику. Вашу сраную плоть!');
    c();
 
-   } else if (podaction == 30.1) {
+   } else if (podaction == 40.1) {
     CherSlis+=getRndInteger(1, 10);
     if (slisesbornik == true || E8 > 0) {
      Show('Вам удалось наполнить пробирки чёрной слизью без прямого контакта с продуктом самосбора');
@@ -4518,7 +4514,7 @@ update();
 
 
 function e() {
- if (action == 5 && podaction == 5 || action == 10 && podaction == 10.21) {
+ if (action == 5 && podaction == 5 || action == 30 && podaction == 30.21) {
   if (vzlom == true) {
    code(1, 210-M*20, kod);
   } else {
@@ -4625,11 +4621,11 @@ function e() {
     Variant5 = '';
 
 
-   } else if (action == 20 && podaction == 0) {
+   } else if (action == 50 && podaction == 0) {
     ver = getRndInteger(1, 20);
    if (S+A >= ver) {
     Show('Вы успешно подкрались к ликвидатору и обезвредили его. Ликвидатор выронил из рук свой огнемёт');
-    podaction = 20.1;
+    podaction = 50.1;
     Variant1 = '1. Пойти дальше';
     Variant2 = '2. Забрать огнемёт';
     Variant3 = '';
@@ -4637,7 +4633,7 @@ function e() {
     Variant5 = '';
     exp+=15;
    } else {
-    podaction = 20;
+    podaction = 50;
     xp-=15;
     Show('Дежурный ликвидатор включил сирену и направил на вас струю огня.');
     Variant1 = '';
@@ -5023,7 +5019,7 @@ function f() {
   } else if (action == 17 && podaction >= 17 && podaction < 17.5) {
    protivnikxp-=attack+Perk3;
    podaction = 17.5;
-   Show(`Человек получает урон и падает, у него осатётся ${protivnikxp} здоровья.`);
+   Show(`Человек получает урон и падает, у него остаётся ${protivnikxp} здоровья.`);
      Variant1 = '';
      Variant2 = '2. Атаковать.';
      Variant3 = '';
@@ -5050,8 +5046,8 @@ function f() {
    };
 
 
-   } else if (action == 20 && podaction == 0) {
-    podaction = 20;
+   } else if (action == 50 && podaction == 0) {
+    podaction = 50;
     protivnikxp-=attack-Perk3+Perk4*S6;
     Show('Ликвидатор получает урон и падает.');
      Variant1 = '';
@@ -5325,7 +5321,7 @@ function son() {
    } else {
    };
 
-  if (podaction == 10.21) {   
+  if (podaction == 30.21) {   
    if (days < samosbor) {
     Show('Первым делом после пробуждения вы поднимаете свой взгляд на вшитый в герму датчик самосбора, но, увы, индикатор не опустился даже даже до жёлтой отметки.');
     ver = getRndInteger(1, 10);
@@ -5627,8 +5623,7 @@ if (zarazh < 2) {
    };
 
   } else if (version == 5) {
-   podaction = 23.6;
-   Show('Вам удалось подобрать нужную точку опоры, и герма начала потихоньку открываться...');
+   Show('Вам удалось взломать замок, и герма начала потихоньку открываться...');
    podaction = 23.6;
    Variant1 = '1. Зайти внутрь';
    Variant2 = '';
