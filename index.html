@@ -277,6 +277,20 @@ let I12z = '';
 let I13 = '';
 let I13z = '';
 let I14z = '';
+let I1v = '';
+let I2v = '';
+let I3v = '';
+let I4v = '';
+let I5v = '';
+let I6v = '';
+let I7v = '';
+let I8v = '';
+let I9v = '';
+let I10v = '';
+let I11v = '';
+let I12v = '';
+let I13v = '';
+let I14v = '';
 let Spos = '';
 let III = '';
 
@@ -373,7 +387,7 @@ function P5ch() {
  Perk5 = 5;
  Perk6 = 0;
  Perk7 = 0;
- opisanie = '<strong>Затворник:</strong> Вы посвятили себя чтению книг и просиживанию в нервосети в поисках новых фактов, однако редко выходили за пределы своей жилъячейки. Быстрый ум и реакция позволяют вам рассчитать вероятность успеха каждого из действий и точнее стрелять из горячего оружия, но общение с людьми причиняет вам неудобство.';
+ opisanie = '<strong>Затворник:</strong> Вы посвятили себя чтению книг и просиживанию в нервосети в поисках новых фактов, однако редко выходили за пределы своей жилъячейки. Благодаря вашим обширным знаниям вы получаете в 2 раза больше опыта, однако ваши умения оставляют желать лучшего — значения всех характеристик снижено на 1 пункт';
  preupdate();
 };
 
@@ -609,7 +623,12 @@ function a() {
  } else {
   kek.innerHTML = '';
   ek.innerHTML = '';
-  U-=Perk5*0.4;
+  X-=Perk5*0.2;
+  E-=Perk5*0.2;
+  A-=Perk5*0.2;
+  M-=Perk5*0.2;
+  S-=Perk5*0.2;
+  U-=Perk5*0.2;
   talon = Perk1;
   Antidot-=Perk6/5;
  };
@@ -646,7 +665,7 @@ let prezh = 0;
 
 
 function b() {
- if (action == 0 && podaction == 0 && exp >= lvl && lvl != 'Max') {
+ if (action == 0 && podaction == 0 && exp+exp*Perk5*0.2 >= lvl && lvl != 'Max') {
    Show('<strong>Вы достигли нового уровня! Выберете доступную способность из предложенных:</strong>');
    action =-111;
    podaction =0;
@@ -961,11 +980,7 @@ function b() {
     action = 6;
     prezh = action;
    Show('Замечен силуэт человеческой фигуры. По хромой походке вы поняли, что это грибной человек');
-   if (Perk5 > 0) {
     Variant1 = `1. Попробовать пройти мимо (шанс ${(S-1)*10}%)`;
-   } else {
-    Variant1 = '1. Попробовать пройти мимо';
-    };
     Variant2 = '2. Атаковать';
     Variant3 = '';
     Variant4 = '';
@@ -977,11 +992,7 @@ function b() {
     prezh = action;
     Show('Вы входите в заброшенный блок. Ни зги не видно! Ещё и пол липкий. Липкий...<br><br>Весь пол окутан толстой паутиной. В нескольких метрах от вас расположена лифтовая шахта.<br>');
     Variant1 = '1. Пойти дальше';
-    if (Perk5 > 0) {
-     Variant2 = `2. Забраться в лифтовую шахту и выкрасть яйцо (шанс ${(S-3)*10}%)`;
-    } else {
-     Variant2 = '2. Забраться в лифтовую шахту';
-    };
+    Variant2 = `2. Забраться в лифтовую шахту и выкрасть яйцо (шанс ${(S-3)*10}%)`;
     Variant3 = '';
     Variant4 = '';
     Variant5 = '';
@@ -1039,8 +1050,8 @@ function b() {
 
    } else if (action == 12) {
     prezh = action;
-    ver = getRndInteger(1, 100);
-    if (ver < 100-S*10) {
+    ver = getRndInteger(1, 10);
+    if (ver < 11-S) {
      Show('С потолка крошится бетон<br><br>Прямо на вас падает червь-бетоноед');
      protivnikxp = 50;
      xp-=5;
@@ -1063,11 +1074,7 @@ function b() {
     prezh = action;
     Show('За поворотом вас поджидала бригада ликвидаторов<br><br><strong>Ликвидатор:</strong> Та-ак, гражданин! Потрудитесь объяснить, что вы делаете вне своей жилъячейки в столь позднее время?');
     protivnikxp = 50;
-    if (Perk5 > 0) {
-     Variant1 = `1. Бежать в другую сторону (шанс ${(E+S)/0.2}%)`;
-    } else {
-     Variant1 = '1. Бежать в другую сторону';
-    };
+    Variant1 = `1. Бежать в другую сторону (шанс ${(E+S)/0.2}%)`;
     Variant2 = '2. Атаковать';
     Variant3 = '3. Я выполняю секретное партийное поручение и не могу разглашать его. Посторонитесь.';
     Variant4 = '';
@@ -1135,15 +1142,9 @@ function b() {
     Show('Вы остановились из-за яркого света в конце коридора. Приглядевшись, вы поняли, что это блокпост, через который вас могут не пропустить.');
     
     Variant1 = '1. Идти мимо';
-    if (Perk5 > 0) {
      Variant2 = `2. Незаметно вывести из строя датчики движения (шанс ${(S+M)/0.2}%)`;
      Variant3 = `3. Проскочить мимо и смыться (шанс ${(S+E)/0.2}%)`;
      Variant4 = `4. Подкрасться и атаковать дежурного (шанс ${(S+A)/0.2}%)`;
-    } else {
-     Variant2 = '2. Незаметно вывести из строя датчики движения';
-     Variant3 = '3. Проскочить мимо и смыться';
-     Variant4 = '4. Подкрасться и атаковать дежурного';
-    };
     Variant5 = '5. Атаковать';
 
    } else if (action == 21 && talon > 4) {
@@ -1153,11 +1154,7 @@ function b() {
     Show(`Вас сбивают с ног. Резко поднявшись, вы поняли, что это грабитель, вытавшивший у вас из кармана ${ver} талонов!`);
     
     Variant1 = '1. Пойти дальше';
-    if (Perk5 > 0) {
      Variant2 = `2. Попробовать догнать (шанс ${(E+A)/0.2}%)`;
-    } else {
-     Variant2 = '2. Попробовать догнать';
-    };
     Variant3 = '';
     Variant4 = '';
     Variant5 = '';
@@ -1166,13 +1163,8 @@ function b() {
    } else if (action == 22) {
     prezh = action;
     Show('Вы проходите мимо жилого блока. Люди вышли с вёрдами и граблями. Один из них поворачивается к вам.<br><br><strong>Руководитель: </strong>Эй, ну а тебе что, особое приглашение нужно? Или ты решил отлынивать от нашего субботника?');
-    if (Perk5 > 0) {
      Variant1 = `1. Попробовать сбежать (шанс ${(E+S)/0.2}%)`;
      Variant2 = '2. Мне выписывали освобождение, помните? У меня аллергия на прозрачную слизь, я не могу её собирать! [Убедительность 6]';
-    } else {
-     Variant1 = '1. Попробовать сбежать';
-     Variant2 = '2. Мне выписывали освобождение, помните? У меня аллергия на прозрачную слизь, я не могу её собирать!';
-    };
     Variant3 = '3. Да я... У меня просто формы нет!';
     Variant4 = '';
     Variant5 = '';
@@ -1197,8 +1189,8 @@ function b() {
 
    } else if (action == 65) {
     prezh = action;
-    ver = getRndInteger(1, 100);
-    if (ver < 100-S*10) {
+    ver = getRndInteger(1, 10);
+    if (ver < 12-S) {
      Show('Вас выследил дикий охотник борщевод<br><br>Борщевод атакует вас');
      protivnikxp = 50;
      xp-=X;
@@ -1258,11 +1250,7 @@ function b() {
     prezh = action;
     protivnikxp = 30;
     Show('Вы услышали звук стекающий вдалеке слизи и прижались к стене. На ваших глазах слизь стекла на бетонный пол и начала подниматься, образуя тело. Нет сомнений, на вашем пути растеклась жижа.');
-    if (Perk5 > 0) {
      Variant1 = `1. Попробовать проскочить мимо (шанс: ${(S-5)*10}%)`;
-    } else {
-     Variant1 = '1. Попробовать проскочить мимо';
-    };
     Variant2 = '2. Атаковать';
     Variant3 = '';
     Variant4 = '';
@@ -1272,11 +1260,7 @@ function b() {
     prezh = action;
     protivnikxp = 60;
     Show('Вы услышали звук стекающий вдалеке слизи и прижались к стене. На ваших глазах поблескивающая белая слизь стекла на бетонный пол и начала подниматься, образуя тело. Нет сомнений, на вашем пути растеклась белая жижа.');
-    if (Perk5 > 0) {
      Variant1 = `1. Попробовать проскочить мимо (шанс: ${(S-8)*10}%)`;
-    } else {
-     Variant1 = '1. Попробовать проскочить мимо';
-    };
     Variant2 = '2. Атаковать';
     Variant3 = '';
     Variant4 = '';
@@ -1297,17 +1281,13 @@ function b() {
    do {
     protivnikxp = getRndInteger(1, 100);
     Ataka1 = getRndInteger(1, 25);
-    Ataka2 = getRndInteger(1, 25);
-    Dop = getRndInteger(1, 50);
+    Ataka2 = getRndInteger(1, 45);
+    Dop = getRndInteger(1, 30);
     Skr = getRndInteger(1, 10);
    } while (protivnikxp+Ataka1+Ataka2+Dop+Skr*5 != 142);
    prezh = action;
    Show('Из темноты глухого коридора доносится визг и грохот. Кажется, там затаилось порождение самосбора');
-   if (Perk5 > 0) {
     Variant1 = `1. Попробовать пройти мимо [Скрытность ${Skr+1}]`;
-   } else {
-    Variant1 = '1. Попробовать пройти мимо';
-   };
    Variant2 = '2. Атаковать';
    Variant3 = '';
    Variant4 = '';
@@ -1318,11 +1298,7 @@ function b() {
     Show('Вы забрели в жилой блок. Похоже, смена кончилась, и все разбрелись по жилъячейкам.<br><br>Под жёлтой лампой посреди коридора стоит автомат-распределитель пищконцентратов');
     Variant1 = '1. Пойти дальше';
     Variant2 = '2. Вставить талон';
-    if (Perk5 > 0) {
      Variant3 = `3. Попробовать вскрыть автомат (шанс ${(M-1)*10}%)`;
-    } else {
-     Variant3 = '3. Попробовать вскрыть автомат';
-    };
     Variant4 = '';
     Variant5 = '';
 
@@ -1331,11 +1307,7 @@ function b() {
     Show('Шум из-за бетонной стены привлёк ваше внимание. Вы решили посмотреть, что там происходит.<br><br>Вы зашли в цех по производству какой-то техники. Тусклое красное освещение не позволяло разобрать формы деталей. Рабочие усердно штамповали их. Кто-то слева окликнул вас.<br><br><strong>Бригадир: </strong>Стой, кто ты? А, неважно. Слушай, у меня тут один человек... Куда-то пропал, мы план не успеваем выполнить. Не хочешь поработать? Всё по честному, за талон.');
     Variant1 = '1. Пойти дальше';
     Variant2 = '2. Поработать одну смену';
-    if (Perk5 > 0) {
      Variant3 = `3. А что вы производите? [Убедительность 4]`;
-    } else {
-     Variant3 = '3. А что вы производите?';
-    };
     Variant4 = '';
     Variant5 = '';
 
@@ -1359,25 +1331,16 @@ function b() {
    } else if (action == 80) {
     protivnikxp = 100;
     Show('Проход запечатан. Под дверью стоит ликвидатор<br><br><strong>Ликвидатор: </strong> Стой. Дальше тебе нельзя.');
-    Variant1 = '1. Всё в порядке, у меня секретное поручение.';
+    Variant1 = '1. Всё в порядке, у меня секретное поручение [Убедительность 10]';
     Variant2 = '2. Атаковать';
-    if (Perk5 > 0) {
-     Variant1 = '1. Всё в порядке, у меня секретное поручение [Убедительность 10]';
-     Variant3 = `3. Выхватить гравижернова (шанс ${(M+A-6)/0.2}%)`;
-    } else {
-     Variant3 = '3. Выхватить гравижернова';
-    };
+    Variant3 = `3. Выхватить гравижернова (шанс ${(M+A-6)/0.2}%)`;
     Variant4 = '';
     Variant5 = '';
 
    } else if (action == 90 && podaction == 90) {
     protivnikxp = 300;
     Show('Вы не верите своим глазам. Вдоль коридора ползёт огромный бетоноед.');
-    if (Perk5 > 0) {
      Variant1 = `1. Попробовать пройти мимо (шанс ${(S-8)*10}%)`;
-    } else {
-     Variant1 = '1. Попробовать пройти мимо';
-    };
     Variant2 = '2. Атаковать';
     Variant3 = '';
     Variant4 = '';
@@ -1391,48 +1354,65 @@ function b() {
  
 
  } else if (action == 0 && ves > vesMax) {
-  let vibros = prompt('Вы перегружены и не можете идти дальше. Выберете, с чем вы готовы расстаться:', 'Пищконцентрат');
-  Variant1 = '1. Продолжить';
-  if (vibros == 'Пищконцентрат' && pish > 0) {
-   pish--;   
-  } else if (vibros == 'Антидот' && Antidot > 0) {
-   Antidot--;   
-  } else if (vibros == 'Чёрная слизь' && CherSlis > 0) {
-   CherSlis--;
-  } else if (vibros == 'Красная слизь' && KrasSlis > 0) {
-   KrasSlis--;   
-  } else if (vibros == 'Розовая слизь' && RoseSlis > 0) {
-   RoseSlis--;   
-  } else if (vibros == 'Белая слизь' && BelSlis > 0) {
-   BelSlis--;   
-  } else if (vibros == 'Говняк' && Govnyak > 0) {
-   Govnyak--;       
-  } else if (vibros == 'Улитка' && Ulitka > 0) {
-   Ulitka--;    
-  } else if (vibros == 'Яйцо' && yai > 0) {
-   yai--;
-  } else if (vibros == 'Этанол' && Samogon > 0) {
-   Samogon--;
-  } else if (vibros == 'Взрывчатка' && Bomb > 0) {
-   Bomb--;
-  } else if (vibros == 'Мышечная масса' && Boost > 0) {
-   Boost--;
-  } else if (vibros == 'Биоперемещатель' && Ischez > 0) {
-   Ischez--;
-   
-  } else if (vibros == 'Оружие') {
-   if (gun != 'Щупальце' && gun != 'Кулак') {
-    gun = 'Кулак';
-    VesGun = 0;
-    
-   } else {
-    alert('У вас нет оружия.')
-   }
-  } else if (vibros == 'Слизь') {
-   alert('Укажите тип слизи. Например: "Чёрная слизь"')
-  } else { 
-   alert('Вам придётся что-то сбросить.')
+  Variant1 = '';
+  action =-1;
+  if (gun != 'Щупальце' && gun != 'Кулак') {
+   I14v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(14);">`;
+  } else {
   };
+  if (pish > 0) {
+   I1v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(1);">`;
+  } else {
+  };
+  if (Antidot > 0) {
+   I2v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(2);">`;
+  } else {
+  };
+  if (CherSlis > 0) {
+   I3v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(3);">`;
+  } else {
+  };
+  if (KrasSlis > 0) {
+   I4v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(4);">`;
+  } else {
+  };
+  if (RoseSlis > 0) {
+   I5v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(5);">`;
+  } else {
+  };
+  if (BelSlis > 0) {
+   I6v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(6);">`;
+  } else {
+  };
+  if (Govnyak > 0) {
+   I10v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(7);">`;
+  } else {
+  };
+  if (Ulitka > 0) {
+   I7v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(8);">`;
+  } else {
+  };
+  if (yai > 0) {
+   I8v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(9);">`;
+  } else {
+  };
+  if (Samogon > 0) {
+   I9v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(10);">`;
+  } else {
+  };
+  if (Bomb > 0) {
+   I11v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(11);">`;
+  } else {
+  };
+  if (Boost > 0) {
+   I12v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(12);">`;
+  } else {
+  };
+  if (Ischez > 0) {
+   I13v = `<input type="button" value="Сбросить" name="hello" OnClick="Sbros(13);">`;
+  } else {
+  };
+  Show('Вы перегружены и не можете идти дальше. Выберете в инвентаре, с чем вы готовы расстаться');
 
   } else if (action == -111) {
    if (E3 == 0 && Eb >= 3) {
@@ -3357,11 +3337,7 @@ function c() {
    if (S > 7) {
     podaction = 18.8;
     Show('Вы незаметно зашли в то, что когда-то было жилой ячейкой. Внутри находились существа, которые весьма отдалённо напоминают людей.<br><br><strong>Мутант: </strong>Итак, давайте обсудим наши текущие дела...<br><br>Вы увидели, что у одного из мутантов внутри балахона торчит искомая рукопись.');
-    if (Perk5 > 0) {
      Variant1 = `1. Выкрасть рукопись (шанс ${(S+M)/0.2}%)`;
-    } else {
-     Variant1 = '1. Выкрасть рукопись';
-    };
     Variant2 = '2. Атаковать';
     Variant3 = '';
     Variant4 = '';
@@ -3383,11 +3359,11 @@ function c() {
     c();
 
   } else if (podaction == 18.9) {
+     protivnikxp-=attack+Perk3;
        if (protivnikxp > 0) {
          Variant1 = '';
          Variant2 = '2. Атаковать';
          Variant3 = '';
-        protivnikxp-=attack+Perk3;
         Show(`Мутант получает урон, у него остаётся ${protivnikxp} здоровья.<br><br>Мутант бьёт вас щупальцем.<br><br>Одноглазый мутант направляется к выходу`);
         protivnikAttack = getRndInteger(10, 25);
         xp -= protivnikAttack;
@@ -5121,9 +5097,9 @@ update();
 
 function labor() {
     let lab = prompt('Введите то, что хотите изготовить', 'Самогон на улитках');
-   if (lab == 'Самогон на улитках' && Ulitka >= 3) {
+   if (lab == 'Самогон на улитках' && Ulitka >= 2) {
    Show('Вы изготовили самогон на улитках');
-    Ulitka-=3;
+    Ulitka-=2;
     Samogon++;
     exp+=4;
 
@@ -5169,31 +5145,31 @@ function store() {
  let tovar = prompt('Выберете то, что хотите продать или напишите "Всё", если хотите продать всё:', 'Всё');
   if (tovar == 'Чёрная слизь' && CherSlis > 0) {
    CherSlis--;
-   talon+=3;
-   exp+=1;
+   talon+=Math.trunc((5+U)*0.3);
+   exp+=(5+U)*0.15;
   } else if (tovar == 'Красная слизь' && KrasSlis > 0) {
    KrasSlis--;
-   talon+=5;
-   exp+=2;
+   talon+=Math.trunc((5+U)*0.5);
+   exp+=(5+U)*0.25;
   } else if (tovar == 'Розовая слизь' && RoseSlis > 0) {
    RoseSlis--;
-   talon+=10;
-   exp+=5;
+   talon+=5+U;
+   exp+=(5+U)*0.5;
   } else if (tovar == 'Белая слизь' && BelSlis > 0) {
    BelSlis--;
-   talon+=20;
-   exp+=10;
+   talon+=(5+U)*2;
+   exp+=5+U;
   } else if (tovar == 'Улитка' && Ulitka > 0) {
    Ulitka--;
-   talon+=1;
-   exp+=0.5;
+   talon+=Math.trunc((5+U)*0.2);
+   exp+=(5+U)*0.1;
   } else if (tovar == 'Яйцо' && yai > 0) {
    yai--;
-   talon+=10;
-   exp+=5;
+   talon+=5+U;
+   exp+=(5+U)*0.5;
   } else if (tovar == 'Всё') {
-   talon+=CherSlis*3+KrasSlis*5+RoseSlis*10+BelSlis*20+Ulitka+yai*10;
-   exp+=(CherSlis*3+KrasSlis*5+RoseSlis*10+BelSlis*20+Ulitka+yai*10)/2;
+   talon+=Math.trunc((CherSlis*3+KrasSlis*5+RoseSlis*10+BelSlis*20+Ulitka+yai*10)*(5+U)*0.1);
+   exp+=(CherSlis*1.5+KrasSlis*2.5+RoseSlis*5+BelSlis*10+Ulitka*2+yai*5)*(5+U)*0.1;
    CherSlis = 0;
    KrasSlis = 0;
    RoseSlis = 0;
@@ -5211,59 +5187,59 @@ function store2() {
  let tovar = prompt('Выберете то, что хотите продать или напишите "Всё", если хотите продать всё:', 'Всё');
   if (tovar == 'Чёрная слизь' && CherSlis > 0) {
    CherSlis--;
-   talon+=2;
-   exp++;
+   talon+=Math.trunc((5+U)*0.2);
+   exp+=(5+U)*0.1;
   } else if (tovar == 'Красная слизь' && KrasSlis > 0) {
    KrasSlis--;
-   talon+=3;
-   exp++;
+   talon+=Math.trunc((5+U)*0.3);
+   exp+=(5+U)*0.15;
   } else if (tovar == 'Розовая слизь' && RoseSlis > 0) {
    RoseSlis--;
-   talon+=5;
-   exp+=2;
+   talon+=Math.trunc((5+U)*0.5);
+   exp+=(5+U)*0.25;
   } else if (tovar == 'Белая слизь' && BelSlis > 0) {
    BelSlis--;
-   talon+=10;
-   exp+=5;
+   talon+=5+U;
+   exp+=(5+U)*0.5;
   } else if (tovar == 'Улитка' && Ulitka > 0) {
    Ulitka--;
-   talon+=1;
-   exp+=0.5;
+   talon+=Math.trunc((5+U)*0.2);
+   exp+=(5+U)*0.1;
   } else if (tovar == 'Яйцо' && yai > 0) {
    yai--;
-   talon+=10;
-   exp+=5;
+   talon+=5+U;
+   exp+=(5+U)*0.5;
   } else if (tovar == 'Пищконцентрат' && pish > 0) {
    pish--;
-   talon++;
-   exp+=0.5;
+   talon+=Math.trunc((5+U)*0.1);
+   exp+=(5+U)*0.05;
   } else if (tovar == 'Антидот' && Antidot > 0) {
    Antidot--;
-   talon++;
-   exp+=0.5;
+   talon+=Math.trunc((5+U)*0.1);
+   exp+=(5+U)*0.05;
   } else if (tovar == 'Говняк' && Govnyak > 0) {
    Govnyak--;
-   talon+=3;
-   exp+=1.5;
+   talon+=Math.trunc((5+U)*0.3);
+   exp+=(5+U)*0.15;
   } else if (tovar == 'Этанол' && Samogon > 0) {
    Samogon--;
-   talon+=3;
-   exp+=1.5;
+   talon+=Math.trunc((5+U)*0.3);
+   exp+=(5+U)*0.15;
   } else if (tovar == 'Взрывчатка' && Bomb > 0) {
    Bomb--;
-   talon+=20;
-   exp+=10;
+   talon+=(5+U)*2;
+   exp+=5+U;
   } else if (tovar == 'Мышечная масса' && Boost > 0) {
    Boost--;
-   talon+=15;
-   exp+=7.5;
-  } else if (tovar == 'Паутинное бешенство' && Ischez > 0) {
+   talon+=Math.trunc((5+U)*1.5);
+   exp+=(5+U)*0.75;
+  } else if (tovar == 'Биоперемещатель' && Ischez > 0) {
    Ischez--;
-   talon+=40;
-   exp+=20;
+   talon+=(5+U)*4;
+   exp+=(5+U)*2;
   } else if (tovar == 'Всё') {
-   talon+=CherSlis*3+KrasSlis*5+RoseSlis*10+BelSlis*20+Ulitka+yai*10+Samogon*3+Govnyak*3+Bomb*20+Boost*15+Ischez*40;
-   exp+=(CherSlis*3+KrasSlis*5+RoseSlis*10+BelSlis*20+Ulitka+yai*10+Samogon*3+Govnyak*3+Bomb*20+Boost*15+Ischez*40)/2;
+   talon+=Math.trunc((CherSlis*3+KrasSlis*5+RoseSlis*10+BelSlis*20+Ulitka*2+yai*10+Samogon*3+Govnyak*3+Bomb*20+Boost*15+Ischez*40)*(5+U)*0.1);
+   exp+=(CherSlis*1.5+KrasSlis*2.5+RoseSlis*5+BelSlis*10+Ulitka+yai*5+Samogon*1.5+Govnyak*1.5+Bomb*10+Boost*7.5+Ischez*20)*(5+U)*0.1;
    CherSlis = 0;
    KrasSlis = 0;
    RoseSlis = 0;
@@ -5732,16 +5708,16 @@ function update() {
    attack = getRndInteger(A, A+Perk2);
   } else if (gun == 'Ржавый огнемёт') {
    VesGun = 10-M6*5;
-   attack = getRndInteger(0+Math.trunc(M/2), 10+Perk5);
+   attack = getRndInteger(Math.trunc(M/2), 10);
   } else if (gun == 'Огнемёт') {
    VesGun = 10-M6*5;
-   attack = getRndInteger(5+Math.trunc(M/2), 15+Perk5);
+   attack = getRndInteger(5+Math.trunc(M/2), 15);
   } else if (gun == 'Проржавевшие гравижернова') {
    VesGun = 15-M6*7;
-   attack = getRndInteger(0+Math.trunc(M/2), 35+Perk5*3);
+   attack = getRndInteger(0+Math.trunc(M/2), 35);
   } else if (gun == 'Гравижернова') {
    VesGun = 15-M6*7;
-   attack = getRndInteger(10+Math.trunc(M/2), 50+Perk5*5);
+   attack = getRndInteger(10+Math.trunc(M/2), 50);
   } else if (gun == 'Серп и молот') {
    VesGun = 10;
    attack = getRndInteger(A, A*X+Perk2);
@@ -5873,7 +5849,7 @@ function update() {
   document.getElementById("Kur").innerHTML = Kur;;
   document.getElementById("KKK").innerHTML = KKK;;
   document.getElementById("III").innerHTML = III;;
-  lol.innerHTML = `Пройдено метров: ${metr}&nbsp&nbsp|&nbsp&nbspСмена: ${day}&nbsp&nbsp|&nbsp&nbspЗдоровье: ${xp}/${xpMax}&nbsp&nbsp|&nbsp&nbspВес: ${ves}/${vesMax}&nbsp&nbsp|&nbsp&nbspТалоны: ${talon}&nbsp&nbsp|&nbsp&nbspОпыт: ${Math.trunc(exp)}/${lvl}&nbsp&nbsp|&nbsp&nbspОружие: ${gun}&nbsp&nbsp|&nbsp&nbspОдежда: ${odezhda}<hr>${I1} ${I2} ${I3} ${I4} ${I5} ${I6} ${I7} ${I8} ${I9} ${I10} ${I11} ${I12} ${I13}<hr>Здоровье: ${Xb}${Xd} | Выносливость: ${Eb}${Ed}${Eq}${Eqq} | Атака: ${Ab}${Ad}${Aq}${Aqq} | Моторика: ${Mb}${Md}${Mq}${Mqq} | Скрытность: ${Sb}${Sd}${Sq}${Sqq} | Убедительность: ${Ub}${Ud}${Uq}${Uqq}\n<br><br>Особенности: ${Spos}${SPO}<hr>`;
+  lol.innerHTML = `Пройдено метров: ${metr}&nbsp&nbsp|&nbsp&nbspСмена: ${day}&nbsp&nbsp|&nbsp&nbspЗдоровье: ${xp}/${xpMax}&nbsp&nbsp|&nbsp&nbspВес: ${ves}/${vesMax}&nbsp&nbsp|&nbsp&nbspТалоны: ${talon}&nbsp&nbsp|&nbsp&nbspОпыт: ${Math.trunc(exp+exp*Perk5*0.2)}/${lvl}&nbsp&nbsp|&nbsp&nbspОружие: ${gun} ${I14v}&nbsp&nbsp|&nbsp&nbspОдежда: ${odezhda}<hr>${I1} ${I1v} ${I2} ${I2v} ${I3} ${I3v} ${I4} ${I4v} ${I5} ${I5v} ${I6} ${I6v} ${I7} ${I7v} ${I8} ${I8v} ${I9} ${I9v} ${I10} ${I10v} ${I11} ${I11v} ${I12} ${I12v} ${I13} ${I13v}<hr>Здоровье: ${Xb}${Xd} | Выносливость: ${Eb}${Ed}${Eq}${Eqq} | Атака: ${Ab}${Ad}${Aq}${Aqq} | Моторика: ${Mb}${Md}${Mq}${Mqq} | Скрытность: ${Sb}${Sd}${Sq}${Sqq} | Убедительность: ${Ub}${Ud}${Uq}${Uqq}\n<br><br>Особенности: ${Spos}${SPO}<hr>`;
   document.body.append(lol);
 
 };
@@ -5989,6 +5965,112 @@ function Pobeg() {
 
 function Naviki() {
  alert(`Здоровье: ${Xb}${Xd}\nВыносливость: ${Eb}${Ed}\nАтака: ${Ab}${Ad}\nМоторика: ${Mb}${Md}\nСкрытность: ${Sb}${Sd}\nУбедительность: ${Ub}${Ud}\n${Spos}\nСпособности: ${SPO}`);
+};
+
+function Sbros(vibros) {
+ if (vibros == 1 && pish > 0) {
+  pish--;
+  if (pish == 0) {
+   I1v = '';
+  } else {
+  };
+ } else if (vibros == 2 && Antidot > 0) {
+  Antidot--;
+  if (Antidot == 0) {
+   I2v = '';
+  } else {
+  };
+ } else if (vibros == 3 && CherSlis > 0) {
+  CherSlis--;
+  if (CherSlis == 0) {
+   I3v = '';
+  } else {
+  };
+ } else if (vibros == 4 && KrasSlis > 0) {
+  KrasSlis--;
+  if (KrasSlis == 0) {
+   I4v = '';
+  } else {
+  };
+ } else if (vibros == 5 && RoseSlis > 0) {
+  RoseSlis--;
+  if (RoseSlis == 0) {
+   I5v = '';
+  } else {
+  };
+ } else if (vibros == 6 && BelSlis > 0) {
+  BelSlis--;
+  if (BelSlis == 0) {
+   I6v = '';
+  } else {
+  };
+ } else if (vibros == 7 && Govnyak > 0) {
+  Govnyak--;
+  if (Govnyak == 0) {
+   I10v = '';
+  } else {
+  };
+ } else if (vibros == 8 && Ulitka > 0) {
+  Ulitka--;
+  if (Ulitka == 0) {
+   I7v = '';
+  } else {
+  };
+ } else if (vibros == 9 && yai > 0) {
+  yai--;
+  if (yai == 0) {
+   I8v = '';
+  } else {
+  };
+ } else if (vibros == 10 && Samogon > 0) {
+  Samogon--;
+  if (Samogon == 0) {
+   I9v = '';
+  } else {
+  };
+ } else if (vibros == 11 && Bomb > 0) {
+  Bomb--;
+  if (Bomb == 0) {
+   I11v = '';
+  } else {
+  };
+ } else if (vibros == 12 && Boost > 0) {
+  Boost--;
+  if (Boost == 0) {
+   I12v = '';
+  } else {
+  };
+ } else if (vibros == 13 && Ischez > 0) {
+  Ischez--;
+  if (Ischez == 0) {
+   I13v = '';
+  } else {
+  };
+ } else if (vibros == 14) {
+  gun = 'Кулак';
+  I14v = '';
+ } else {
+ };
+ if (ves <= vesMax) {
+  action = 0;
+  Variant1 = '1. Пойти дальше';
+  I1v = '';
+  I2v = '';
+  I3v = '';
+  I4v = '';
+  I5v = '';
+  I6v = '';
+  I7v = '';
+  I8v = '';
+  I9v = '';
+  I10v = '';
+  I11v = '';
+  I12v = '';
+  I13v = '';
+  I14v = '';
+ } else {
+ };
+update();
 };
 
 function ChangeOdezh() {
