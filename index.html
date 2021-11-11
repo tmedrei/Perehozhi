@@ -176,19 +176,19 @@ let zarazh = 0;
 
 let pish = 5;
 let Antidot = 1;
-let CherSlis = 0;
-let KrasSlis = 0;
-let RoseSlis = 0;
-let BelSlis = 0;
-let Ulitka = 0;
-let Govnyak = 0;
+let CherSlis = 1;
+let KrasSlis = 1;
+let RoseSlis = 1;
+let BelSlis = 1;
+let Ulitka = 1;
+let Govnyak = 1;
 let talon = 0;
-let yai = 0;
+let yai = 1;
 
-let Samogon = 0;
-let Bomb = 0;
-let Boost = 0;
-let Ischez = 0;
+let Samogon = 1;
+let Bomb = 1;
+let Boost = 1;
+let Ischez = 1;
 
 let books = 0;
 let zamyetki_antidot = false;
@@ -665,6 +665,12 @@ let prezh = 0;
 
 
 function b() {
+ I3v='';
+ I4v='';
+ I5v='';
+ I6v='';
+ I7v='';
+ I8v='';
  if (action == 0 && podaction == 0 && exp+exp*Perk5*0.2 >= lvl && lvl != 'Max') {
    Show('<strong>Вы достигли нового уровня! Выберете доступную способность из предложенных:</strong>');
    action =-111;
@@ -764,7 +770,7 @@ function b() {
    };
 
  } else if (action == 0 && podaction == 0 && ves <= vesMax && xp > 0 && game == true) {
-
+  
 
   if (Krit >=KritMax && A3 > 0) {
     KKK = 'Критическая атака (Z)';
@@ -776,6 +782,7 @@ function b() {
   days = days+put*0.00005;
    day = Math.trunc(days);
    metr+=put;
+   exp+=put*0.01;
    if (sitost > 0) {
     sitost-=put*0.05+put*0.02*Perk2;
    } else {
@@ -1907,6 +1914,20 @@ function b() {
    c();
 
   } else if (action == 24 && podaction > 0) {
+   I1v = '';
+   I2v = '';
+   I3v = '';
+   I4v = '';
+   I5v = '';
+   I6v = '';
+   I7v = '';
+   I8v = '';
+   I9v = '';
+   I10v = '';
+   I11v = '';
+   I12v = '';
+   I13v = '';
+   I14v = '';
    podaction = 0;
     Variant1 = '1. Пойти дальше';
     Variant2 = '2. Зайти на рынок';
@@ -2470,9 +2491,60 @@ function c() {
       } else if (ver == 8) {
        Variant4 = '4. Купить этанол [5 талонов]';
       } else {
-      }; 
-      Variant5 = '5. Продать';
+      };
       podaction = 24;
+      if (pish > 0 && U > 4) {
+       I1v = `<input type="button" value="Продать" name="hello" OnClick="store2(1);">`;
+      } else {
+      };
+      if (Antidot > 0 && U > 4) {
+       I2v = `<input type="button" value="Продать" name="hello" OnClick="store2(2);">`;
+      } else {
+      };
+      if (CherSlis > 0) {
+       I3v = `<input type="button" value="Продать" name="hello" OnClick="store2(3);">`;
+      } else {
+      };
+      if (KrasSlis > 0) {
+       I4v = `<input type="button" value="Продать" name="hello" OnClick="store2(4);">`;
+      } else {
+      };
+      if (RoseSlis > 0) {
+       I5v = `<input type="button" value="Продать" name="hello" OnClick="store2(5);">`;
+      } else {
+      };
+      if (BelSlis > 0) {
+       I6v = `<input type="button" value="Продать" name="hello" OnClick="store2(6);">`;
+      } else {
+      };
+      if (Govnyak > 0) {
+       I7v = `<input type="button" value="Продать" name="hello" OnClick="store2(7);">`;
+      } else {
+      };
+      if (Ulitka > 0) {
+       I8v = `<input type="button" value="Продать" name="hello" OnClick="store2(8);">`;
+      } else {
+      };
+      if (yai > 0) {
+       I10v = `<input type="button" value="Продать" name="hello" OnClick="store2(9);">`;
+      } else {
+      };
+      if (Samogon > 0) {
+       I9v = `<input type="button" value="Продать" name="hello" OnClick="store2(10);">`;
+      } else {
+      };
+      if (Bomb > 0) {
+       I11v = `<input type="button" value="Продать" name="hello" OnClick="store2(11);">`;
+      } else {
+      };
+      if (Boost > 0) {
+       I12v = `<input type="button" value="Продать" name="hello" OnClick="store2(12);">`;
+      } else {
+      };
+      if (Ischez > 0) {
+       I13v = `<input type="button" value="Продать" name="hello" OnClick="store2(13);">`;
+      } else {
+      };
      } else {
       Show('<strong>Торговец:</strong> Я не буду торговать с тобой. Ты мне не нравишься.');
       Variant2 = '';
@@ -2773,9 +2845,33 @@ function c() {
      Show('<strong>Сотрудник НИИ:</strong> Это хорошая новость! Они нужны нам для экспериментов. Мы готовы приобрести их за разумную плату.');
      Variant1 = '1. Выйти и пойти дальше';
      Variant2 = '2. А разве Партия разрешает вам торговать талонами?';
-     Variant3 = '3. Продать предметы';
-     Variant4 = '4. Я могу воспользоваться вашей лабораторией?';
+     Variant3 = '3. Я могу воспользоваться вашей лабораторией?';
      podaction = 8.1;
+      if (CherSlis > 0) {
+       I3v = `<input type="button" value="Продать" name="hello" OnClick="store(3);">`;
+      } else {
+      };
+      if (KrasSlis > 0) {
+       I4v = `<input type="button" value="Продать" name="hello" OnClick="store(4);">`;
+      } else {
+      };
+      if (RoseSlis > 0) {
+       I5v = `<input type="button" value="Продать" name="hello" OnClick="store(5);">`;
+      } else {
+      };
+      if (BelSlis > 0) {
+       I6v = `<input type="button" value="Продать" name="hello" OnClick="store(6);">`;
+      } else {
+      };
+      if (Ulitka > 0) {
+       I7v = `<input type="button" value="Продать у" name="hello" OnClick="store(7);">`;
+      } else {
+      };
+      if (yai > 0) {
+       I8v = `<input type="button" value="Продать я" name="hello" OnClick="store(8);">`;
+      } else {
+      };
+
   } else if (podaction == 8.1) {
    if (U > 2) {
     Show('<strong>Сотрудник НИИ:</strong> Да сама Партия и дала нам указание поступать таким образом. Наивно думать, что там наверху не знают, о таких, как ты. Вы полезные обезьянки, которые таскают за нас каштаны из огня, вот вас и не трогают. А в обмен мы можем за разумную цену списать вам пару защитных комбинезонов, чтобы конечности от слизи не раславились.');
@@ -4129,8 +4225,14 @@ function d() {
    } else if (M10 > 0) {
    };
 
- } else if (action == 8 && podaction >= 8 && podaction < 9) {
-  store();
+  } else if (action == 8 && podaction >= 8.1) {
+   if (U < 7) {
+    Show('<strong>Сотрудник НИИ:</strong> Конееечно, мы же тут только и ждём проходимца, которого можно будет допустить до секретных экспериментов!');
+   } else {
+    Show('<strong>Сотрудник НИИ:</strong> А ты неужто умеешь обращаться с оборудованием? Хорошо. Только быстро. И под моим надзором.');
+    labor();
+   };
+
  } else if (action == 30 && podaction == 30.21) {
    if (read == false) {
     reading();
@@ -4524,14 +4626,6 @@ function e() {
     Sp = 10;
     b();
    } else if (S10 > 0) {
-   };
-
-  } else if (action == 8 && podaction >= 8.1) {
-   if (U < 7) {
-    Show('<strong>Сотрудник НИИ:</strong> Конееечно, мы же тут только и ждём проходимца, которого можно будет допустить до секретных экспериментов!');
-   } else {
-    Show('<strong>Сотрудник НИИ:</strong> А ты неужто умеешь обращаться с оборудованием? Хорошо. Только быстро. И под моим надзором.');
-    labor();
    };
 
   } else if (action == 16 && podaction == 16.1) {
@@ -5034,7 +5128,6 @@ function f() {
      Variant5 = '';
 
   } else if (action == 24 && podaction == 24.1) {
-   store2();
 
   } else if (action == 31) {
    ver = getRndInteger(1, 100);
@@ -5142,103 +5235,165 @@ function labor() {
    };
 };
 
-function store() {
- let tovar = prompt('Выберете то, что хотите продать или напишите "Всё", если хотите продать всё:', 'Всё');
-  if (tovar == 'Чёрная слизь' && CherSlis > 0) {
+function store(tovar) {
+  if (tovar == 3 && CherSlis > 0) {
    CherSlis--;
    talon+=Math.trunc((5+U)*0.3);
    exp+=(5+U)*0.15;
-  } else if (tovar == 'Красная слизь' && KrasSlis > 0) {
+   if (CherSlis == 0) {
+    I3v = '';
+   } else {
+   };
+  } else if (tovar == 4 && KrasSlis > 0) {
    KrasSlis--;
    talon+=Math.trunc((5+U)*0.5);
    exp+=(5+U)*0.25;
-  } else if (tovar == 'Розовая слизь' && RoseSlis > 0) {
+   if (KrasSlis == 0) {
+    I4v = '';
+   } else {
+   };
+  } else if (tovar == 5 && RoseSlis > 0) {
    RoseSlis--;
    talon+=5+U;
    exp+=(5+U)*0.5;
-  } else if (tovar == 'Белая слизь' && BelSlis > 0) {
+   if (RoseSlis == 0) {
+    I5v = '';
+   } else {
+   };
+  } else if (tovar == 6 && BelSlis > 0) {
    BelSlis--;
    talon+=(5+U)*2;
    exp+=5+U;
-  } else if (tovar == 'Улитка' && Ulitka > 0) {
+   if (BelSlis == 0) {
+    I6v = '';
+   } else {
+   };
+  } else if (tovar == 7 && Ulitka > 0) {
    Ulitka--;
    talon+=Math.trunc((5+U)*0.2);
    exp+=(5+U)*0.1;
-  } else if (tovar == 'Яйцо' && yai > 0) {
+   if (Ulitka == 0) {
+    I7v = '';
+   } else {
+   };
+  } else if (tovar == 8 && yai > 0) {
    yai--;
    talon+=5+U;
    exp+=(5+U)*0.5;
-  } else if (tovar == 'Всё') {
-   talon+=Math.trunc((CherSlis*3+KrasSlis*5+RoseSlis*10+BelSlis*20+Ulitka+yai*10)*(5+U)*0.1);
-   exp+=(CherSlis*1.5+KrasSlis*2.5+RoseSlis*5+BelSlis*10+Ulitka*2+yai*5)*(5+U)*0.1;
-   CherSlis = 0;
-   KrasSlis = 0;
-   RoseSlis = 0;
-   BelSlis = 0;
-   Ulitka = 0;
-   yai = 0;
-  } else if (tovar == 'Слизь') {
-   alert('Укажите тип слизи. Например: "Чёрная слизь"')
-  } else { 
-   alert('Учёные не заинтересованы в вашем предложении.')
+   if (yai == 0) {
+    I8v = '';
+   } else {
+   };
   };
+ update();
 };
 
-function store2() {
- let tovar = prompt('Выберете то, что хотите продать или напишите "Всё", если хотите продать всё:', 'Всё');
-  if (tovar == 'Чёрная слизь' && CherSlis > 0) {
+function store2(tovar) {
+  if (tovar == 3 && CherSlis > 0) {
    CherSlis--;
    talon+=Math.trunc((5+U)*0.2);
    exp+=(5+U)*0.1;
-  } else if (tovar == 'Красная слизь' && KrasSlis > 0) {
+   if (CherSlis == 0) {
+    I3v = '';
+   } else {
+   };
+  } else if (tovar == 4 && KrasSlis > 0) {
    KrasSlis--;
    talon+=Math.trunc((5+U)*0.3);
    exp+=(5+U)*0.15;
-  } else if (tovar == 'Розовая слизь' && RoseSlis > 0) {
+   if (KrasSlis == 0) {
+    I4v = '';
+   } else {
+   };
+  } else if (tovar == 5 && RoseSlis > 0) {
    RoseSlis--;
    talon+=Math.trunc((5+U)*0.5);
    exp+=(5+U)*0.25;
-  } else if (tovar == 'Белая слизь' && BelSlis > 0) {
+   if (RoseSlis == 0) {
+    I5v = '';
+   } else {
+   };
+  } else if (tovar == 6 && BelSlis > 0) {
    BelSlis--;
    talon+=5+U;
    exp+=(5+U)*0.5;
-  } else if (tovar == 'Улитка' && Ulitka > 0) {
+   if (BelSlis == 0) {
+    I6v = '';
+   } else {
+   };
+  } else if (tovar == 7 && Ulitka > 0) {
    Ulitka--;
    talon+=Math.trunc((5+U)*0.2);
    exp+=(5+U)*0.1;
-  } else if (tovar == 'Яйцо' && yai > 0) {
+   if (Ulitka == 0) {
+    I7v = '';
+   } else {
+   };
+  } else if (tovar == 8 && yai > 0) {
    yai--;
    talon+=5+U;
    exp+=(5+U)*0.5;
-  } else if (tovar == 'Пищконцентрат' && pish > 0) {
+   if (yai == 0) {
+    I8v = '';
+   } else {
+   };
+  } else if (tovar == 1 && pish > 0) {
    pish--;
    talon+=Math.trunc((5+U)*0.1);
    exp+=(5+U)*0.05;
-  } else if (tovar == 'Антидот' && Antidot > 0) {
+   if (pish == 0) {
+    I1v = '';
+   } else {
+   };
+  } else if (tovar == 2 && Antidot > 0) {
    Antidot--;
    talon+=Math.trunc((5+U)*0.1);
    exp+=(5+U)*0.05;
-  } else if (tovar == 'Говняк' && Govnyak > 0) {
+   if (Antidot == 0) {
+    I2v = '';
+   } else {
+   };
+  } else if (tovar == 9 && Govnyak > 0) {
    Govnyak--;
    talon+=Math.trunc((5+U)*0.3);
    exp+=(5+U)*0.15;
-  } else if (tovar == 'Этанол' && Samogon > 0) {
+   if (Govnyak == 0) {
+    I10v = '';
+   } else {
+   };
+  } else if (tovar == 10 && Samogon > 0) {
    Samogon--;
    talon+=Math.trunc((5+U)*0.3);
    exp+=(5+U)*0.15;
-  } else if (tovar == 'Взрывчатка' && Bomb > 0) {
+   if (Samogon == 0) {
+    I9v = '';
+   } else {
+   };
+  } else if (tovar == 11 && Bomb > 0) {
    Bomb--;
    talon+=(5+U)*2;
    exp+=5+U;
-  } else if (tovar == 'Мышечная масса' && Boost > 0) {
+   if (Bomb == 0) {
+    I11v = '';
+   } else {
+   };
+  } else if (tovar == 12 && Boost > 0) {
    Boost--;
    talon+=Math.trunc((5+U)*1.5);
    exp+=(5+U)*0.75;
-  } else if (tovar == 'Биоперемещатель' && Ischez > 0) {
+   if (Boost == 0) {
+    I12v = '';
+   } else {
+   };
+  } else if (tovar == 13 && Ischez > 0) {
    Ischez--;
    talon+=(5+U)*4;
    exp+=(5+U)*2;
-  } else if (tovar == 'Всё') {
+   if (Ischez == 0) {
+    I13v = '';
+   } else {
+   };
+  } else if (tovar == '14') {
    talon+=Math.trunc((CherSlis*3+KrasSlis*5+RoseSlis*10+BelSlis*20+Ulitka*2+yai*10+Samogon*3+Govnyak*3+Bomb*20+Boost*15+Ischez*40)*(5+U)*0.1);
    exp+=(CherSlis*1.5+KrasSlis*2.5+RoseSlis*5+BelSlis*10+Ulitka+yai*5+Samogon*1.5+Govnyak*1.5+Bomb*10+Boost*7.5+Ischez*20)*(5+U)*0.1;
    CherSlis = 0;
@@ -5258,6 +5413,7 @@ function store2() {
   } else { 
    alert('Торговец смотрит на вас безучастным взглядом, ожидая, что вы сможете сделать подобающее предложение')
   };
+ update();
 };
 
 function son() {
