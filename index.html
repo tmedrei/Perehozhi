@@ -1081,7 +1081,7 @@ function b() {
     prezh = action;
     Show('За поворотом вас поджидала бригада ликвидаторов<br><br><strong>Ликвидатор:</strong> Та-ак, гражданин! Потрудитесь объяснить, что вы делаете вне своей жилъячейки в столь позднее время?');
     protivnikxp = 50;
-    Variant1 = `1. Бежать в другую сторону (шанс ${(E+S)/0.2}%)`;
+    Variant1 = `1. Бежать в другую сторону (шанс ${(E+S-1)/0.2}%)`;
     Variant2 = '2. Атаковать';
     Variant3 = '3. Я выполняю секретное партийное поручение и не могу разглашать его. Посторонитесь.';
     Variant4 = '';
@@ -1148,10 +1148,10 @@ function b() {
     protivnikxp = 50;
     Show('Вы остановились из-за яркого света в конце коридора. Приглядевшись, вы поняли, что это блокпост, через который вас могут не пропустить.');
     
-    Variant1 = '1. Идти мимо';
-     Variant2 = `2. Незаметно вывести из строя датчики движения (шанс ${(S+M)/0.2}%)`;
-     Variant3 = `3. Проскочить мимо и смыться (шанс ${(S+E)/0.2}%)`;
-     Variant4 = `4. Подкрасться и атаковать дежурного (шанс ${(S+A)/0.2}%)`;
+    Variant1 = '1. Идти мимо [Убедительность 9]';
+     Variant2 = `2. Незаметно вывести из строя датчики движения (шанс ${(S+M-1)/0.2}%)`;
+     Variant3 = `3. Проскочить мимо и смыться (шанс ${(S+E-1)/0.2}%)`;
+     Variant4 = `4. Подкрасться и атаковать дежурного (шанс ${(S+A-1)/0.2}%)`;
     Variant5 = '5. Атаковать';
 
    } else if (action == 21 && talon > 4) {
@@ -1170,7 +1170,7 @@ function b() {
    } else if (action == 22) {
     prezh = action;
     Show('Вы проходите мимо жилого блока. Люди вышли с вёрдами и граблями. Один из них поворачивается к вам.<br><br><strong>Руководитель: </strong>Эй, ну а тебе что, особое приглашение нужно? Или ты решил отлынивать от нашего субботника?');
-     Variant1 = `1. Попробовать сбежать (шанс ${(E+S)/0.2}%)`;
+     Variant1 = `1. Попробовать сбежать (шанс ${(E+S-1)/0.2}%)`;
      Variant2 = '2. Мне выписывали освобождение, помните? У меня аллергия на прозрачную слизь, я не могу её собирать! [Убедительность 6]';
     Variant3 = '3. Да я... У меня просто формы нет!';
     Variant4 = '';
@@ -1294,7 +1294,7 @@ function b() {
    } while (protivnikxp+Ataka1+Ataka2+Dop+Skr*5 != 142);
    prezh = action;
    Show('Из темноты глухого коридора доносится визг и грохот. Кажется, там затаилось порождение самосбора');
-    Variant1 = `1. Попробовать пройти мимо [Скрытность ${Skr+1}]`;
+    Variant1 = `1. Попробовать пройти мимо (шанс ${(S*2-Skr-1)*10}%)`;
    Variant2 = '2. Атаковать';
    Variant3 = '';
    Variant4 = '';
@@ -1953,7 +1953,8 @@ function b() {
     };
 
   } else if (action == 32 && podaction == 0) {
-   if (S > Skr) {
+   ver = getRndInteger(1, 20);
+   if (ver < S*2-Skr) {
     Show('Вам удалось проскочить мимо!');
     action = 0;
     Variant1 = '1. Пойти дальше';
@@ -2064,8 +2065,9 @@ function c() {
    if (A3 == 0 && Ab >= 3) {
     A3 = 2;
     KritMax=20;
+    Krit = 0;
     action = 0;
-    SPO=SPO+'|Критическая атака';
+    SPO=SPO+'|Критический урон';
     Ap = 4;
     b();
    } else if (A3 == 2 && Ab >= 6) {
@@ -2406,7 +2408,7 @@ function c() {
 
    } else if (action == 50 && podaction == 0) {
     ver = getRndInteger(1, 20);
-   if (S+M >= ver) {
+   if (S+M > ver) {
     Show('Система вышла из строя, блок обесточен. Вы можете прокрасться к выходу');
     action = 0;
     podaction = 0;
@@ -4033,6 +4035,13 @@ Variant2 = '';
 
  } else if (podaction == 33) {
   pish++;
+  ver = getRndInteger(1, 20);
+  if (ver > S+9) {
+   podaction = 33.1;
+   c();
+  } else {
+  };
+
  } else if (podaction == 33.1) {
      if (attack-Perk3 > 0) {
       protivnikxp -= attack-Perk3;
@@ -4367,7 +4376,7 @@ function d() {
 
    } else if (action == 50 && podaction == 0) {
     ver = getRndInteger(1, 20);
-   if (S+E >= ver) {
+   if (S+E > ver) {
     Show('Вы даже не поняли, заметили ли вас, так быстро вы рванули к выходу. Вы бежали достаточно долго, чтобы убедиться в отсутствии преследования');
     action = 0;
     podaction = 0;
@@ -4694,7 +4703,7 @@ function e() {
 
    } else if (action == 50 && podaction == 0) {
     ver = getRndInteger(1, 20);
-   if (S+A >= ver) {
+   if (S+A > ver) {
     Show('Вы успешно подкрались к ликвидатору и обезвредили его. Ликвидатор выронил из рук свой огнемёт');
     podaction = 50.1;
     Variant1 = '1. Пойти дальше';
@@ -6006,7 +6015,7 @@ function update() {
   document.getElementById("Kur").innerHTML = Kur;;
   document.getElementById("KKK").innerHTML = KKK;;
   document.getElementById("III").innerHTML = III;;
-  lol.innerHTML = `Пройдено метров: ${metr}&nbsp&nbsp|&nbsp&nbspСмена: ${day}&nbsp&nbsp|&nbsp&nbspЗдоровье: ${xp}/${xpMax}&nbsp&nbsp|&nbsp&nbspВес: ${ves}/${vesMax}&nbsp&nbsp|&nbsp&nbspТалоны: ${talon}&nbsp&nbsp|&nbsp&nbspОпыт: ${Math.trunc(exp+exp*Perk5*0.2)}/${lvl}&nbsp&nbsp|&nbsp&nbspОружие: ${gun} ${I14v}&nbsp&nbsp|&nbsp&nbspОдежда: ${odezhda}<hr>${I1} ${I1v} ${I2} ${I2v} ${I3} ${I3v} ${I4} ${I4v} ${I5} ${I5v} ${I6} ${I6v} ${I7} ${I7v} ${I8} ${I8v} ${I9} ${I9v} ${I10} ${I10v} ${I11} ${I11v} ${I12} ${I12v} ${I13} ${I13v}<hr>Здоровье: ${Xb}${Xd} | Выносливость: ${Eb}${Ed}${Eq}${Eqq} | Атака: ${Ab}${Ad}${Aq}${Aqq} | Моторика: ${Mb}${Md}${Mq}${Mqq} | Скрытность: ${Sb}${Sd}${Sq}${Sqq} | Убедительность: ${Ub}${Ud}${Uq}${Uqq}\n<br><br>Особенности: ${Spos}${SPO}<hr>`;
+  lol.innerHTML = `Пройдено метров: ${metr}&nbsp&nbsp|&nbsp&nbspСмена: ${day}&nbsp&nbsp|&nbsp&nbspЗдоровье: ${xp}/${xpMax}&nbsp&nbsp|&nbsp&nbspВес: ${ves}/${vesMax}&nbsp&nbsp|&nbsp&nbspТалоны: ${talon}&nbsp&nbsp|&nbsp&nbspОпыт: ${Math.trunc(exp+exp*Perk5*0.2)}/${lvl}&nbsp&nbsp|&nbsp&nbspОружие: ${gun} ${I14v}&nbsp&nbsp|&nbsp&nbspОдежда: ${odezhda}<hr><strong>Инвентарь: </strong>${I1} ${I1v} ${I2} ${I2v} ${I3} ${I3v} ${I4} ${I4v} ${I5} ${I5v} ${I6} ${I6v} ${I7} ${I7v} ${I8} ${I8v} ${I9} ${I9v} ${I10} ${I10v} ${I11} ${I11v} ${I12} ${I12v} ${I13} ${I13v}<hr><strong>Характеристики: </strong>Здоровье: ${Xb}${Xd} | Выносливость: ${Eb}${Ed}${Eq}${Eqq} | Атака: ${Ab}${Ad}${Aq}${Aqq} | Моторика: ${Mb}${Md}${Mq}${Mqq} | Скрытность: ${Sb}${Sd}${Sq}${Sqq} | Убедительность: ${Ub}${Ud}${Uq}${Uqq}\n<hr><strong>Особенности: </strong>${Spos}${SPO}<hr>`;
   document.body.append(lol);
 
 };
