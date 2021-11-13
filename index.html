@@ -72,7 +72,7 @@
 <script>
 
 kek.insertAdjacentHTML('afterbegin', '<input type="image" src="s7.jpg" value="Создать персонажа" name="hello" OnClick="Nastroiki();">');
-
+otvet = '';
 
 let X = 6;
 let A = 6;
@@ -937,7 +937,7 @@ function b() {
    } else {
    };
    
-  action = getRndInteger(1, Math.trunc(Math.sqrt(metr)));
+  action = getRndInteger(29, Math.trunc(Math.sqrt(metr)));
    if (action == prezh) {
     action = 0;
     b();
@@ -1024,6 +1024,7 @@ function b() {
     Variant5 = '';
 
    } else if (action == 9 || action == 59) {
+    action = 9;
     prezh = action;
     Show('Обнаружен заброшенный блок. Ни одной целой гермы. Лучше здесь не задерживаться');
     kod = getRndInteger(1, 2100-M*200);
@@ -1055,6 +1056,7 @@ function b() {
     Variant5 = '';
 
    } else if (action == 11 || action == 61) {
+    action = 11;
     prezh = action;
    Show('Под сапогами трещит битое стекло. Вдалеке мерцает полудохлая лампа в грязном плафоне.<br><br>Вы зашли в зону лаборатории заброшенного НИИ');
    kod = getRndInteger(1, 2100-M*200);
@@ -1303,7 +1305,7 @@ function b() {
    } while (protivnikxp+Ataka1+Ataka2+Dop+Skr*5 != 142);
    prezh = action;
    Show('Из темноты глухого коридора доносится визг и грохот. Кажется, там затаилось порождение самосбора');
-    Variant1 = `1. Попробовать пройти мимо (шанс ${(S*2-Skr-1)*10}%)`;
+    Variant1 = `1. Попробовать пройти мимо (шанс ${(S*2-Skr-1)*5}%)`;
    Variant2 = '2. Атаковать';
    Variant3 = '';
    Variant4 = '';
@@ -2255,49 +2257,42 @@ function c() {
 
   } else if (action == 9) {
    if (vzlom == true) {
-    code2(1, 2100-M*200, kod, 1);
+    do {
+     code2(1, 2100-M*200, kod, 1);
+     ver = getRndInteger(1, 100);
+     if (ver < 12-S) {
+      Show('Пока вы возились с кодовым замком, сзади подкралась какая-то мутировавшая тварь<br><br>Мутировавшая тварь атакует вас.');
+      protivnikxp = 25;
+      xp-=10;
+      Variant1 = '';
+      Variant2 = '2. Атаковать.';
+      Variant3 = '';
+      podaction = 9;
+     } else {
+     };
+    } while (otvet > kod && vzlom == true && podaction == 0 || otvet < kod && vzlom == true && podaction == 0);
    } else {
     alert('Вряд ли здесь можно найти что-то ещё.')
-   };
-   ver = getRndInteger(1, 100);
-   if (ver < 12-S) {
-    Show('Пока вы возились с кодовым замком, сзади подкралась какая-то мутировавшая тварь<br><br>Мутировавшая тварь атакует вас.');
-    protivnikxp = 25;
-    xp-=10;
-    Variant1 = '';
-    Variant2 = '2. Атаковать.';
-    Variant3 = '';
-    podaction = 9;
-   } else {
    };
 
   } else if (action == 11) {
    if (vzlom == true) {
-    code2(1, 2100-M*200, kod, 2);
+    do {
+     code2(1, 2100-M*200, kod, 1);
+     ver = getRndInteger(1, 100);
+     if (ver < 12-S) {
+      Show('Пока вы возились с кодовым замком, сзади подкралась какая-то мутировавшая тварь<br><br>Мутировавшая тварь атакует вас.');
+      protivnikxp = 25;
+      xp-=10;
+      Variant1 = '';
+      Variant2 = '2. Атаковать.';
+      Variant3 = '';
+      podaction = 11;
+     } else {
+     };
+    } while (otvet > kod && vzlom == true && podaction == 0 || otvet < kod && vzlom == true && podaction == 0);
    } else {
     alert('Вряд ли здесь можно найти что-то ещё.')
-   };
-   ver = getRndInteger(1, 100);
-   if (ver < 12-S) {
-    Show('Пока вы возились с кодовым замком, сзади подкралась какая-то мутировавшая тварь<br><br>Мутировавшая тварь атакует вас.');
-    protivnikxp = 25;
-    Variant1 = '';
-    Variant2 = '2. Атаковать.';
-    Variant3 = '';
-    xp-=10;
-    podaction = 11;
-    Variant1 = '';
-    Variant2 = '2. Атаковать.';
-    Variant3 = '';
-    if (xp <= 0) {
-     Tit = 'Проглоченный бетоноедом';
-     Kur = 'Ваше дохлое тело отправляется в увлекательнейшее путешествие по бетонным норам Гигахруща';
-     Variant1 = '';
-     Variant2 = '';
-     action = -1;
-    } else {
-    };
-   } else {
    };
  
   } else if (action == 12) {
@@ -2617,28 +2612,30 @@ function c() {
 
   } else if (action == 29) {
    if (vzlom == true) {
-    code2(1, 21000-M*2000, kod, 3);
+    do {
+     code2(1, 21000-M*2000, kod, 3);
+     ver = getRndInteger(1, 100);
+     if (ver < 11-S*0.5) {
+      Variant1 = '';
+      Variant2 = '2. Атаковать.';
+      Variant3 = '';
+      ver = getRndInteger(1, 2);
+      if (ver == 1) {
+       Show('Пока вы возились с сейфом, сзади подкрался грибной человек<br><br>Грибной атакует вас.');
+       protivnikxp = 30;
+       xp-=10;
+      } else if (ver == 2) {
+       Show('Пока вы возились с сейфом, позади вас образовалась жижа<br><br>Жижа атакует вас.');
+       protivnikxp = 30;
+       xp-=15;
+      } else {
+      };
+      podaction = 29;
+     } else {
+     };
+    } while (otvet > kod && vzlom == true && podaction == 0 || otvet < kod && vzlom == true && podaction == 0);
    } else {
     alert('Вряд ли здесь можно найти что-то ещё.')
-   };
-   ver = getRndInteger(1, 100);
-   if (ver < 11-S*0.5) {
-    Variant1 = '';
-    Variant2 = '2. Атаковать.';
-    Variant3 = '';
-    ver = getRndInteger(1, 2);
-    if (ver == 1) {
-     Show('Пока вы возились с сейфом, сзади подкрался грибной человек<br><br>Грибной атакует вас.');
-     protivnikxp = 30;
-     xp-=10;
-    } else if (ver == 2) {
-     Show('Пока вы возились с сейфом, позади вас образовалась жижа<br><br>Жижа атакует вас.');
-     protivnikxp = 40;
-     xp-=15;
-    } else {
-    };
-    podaction = 29;
-   } else {
    };
 
   } else if (action == 40) {
@@ -4439,8 +4436,9 @@ function d() {
    Variant3 = '3. Попробовать взломать замок';
 
   } else if (action == 23 && podaction == 23.11) {
-   code2(1, 2100000-M*200000, kod, 5);
-
+   do {
+    code2(1, 2100000-M*200000, kod, 5);
+   } while (otvet > kod && vzlom == true || otvet < kod && vzlom == true);
 
   } else if (action == 23 && podaction == 23.2) {
    podaction = 23.11;
@@ -4630,7 +4628,9 @@ update();
 function e() {
  if (action == 5 && podaction == 5 || action == 30 && podaction == 30.21) {
   if (vzlom == true) {
-   code(1, 210-M*20, kod);
+   do {
+    code(1, 210-M*20, kod);
+   } while (otvet > kod && vzlom == true || otvet < kod && vzlom == true);
   } else {
   alert('Вряд ли здесь можно найти что-то ещё.')
   };
@@ -5581,7 +5581,7 @@ if (zarazh < 2) {
   koda = key;
  } else {
  };
-  let otvet = prompt(`Здесь установлен кодовый замок. Для открытия необходимо подобрать код от ${kodemin} до ${kodemax}`, `${koda}`);
+  otvet = prompt(`Здесь установлен кодовый замок. Для открытия необходимо подобрать код от ${kodemin} до ${kodemax}\n(чтобы прекратить взлом, введите любое нечисловое значение)`, `${koda}`);
  if (otvet > key) {
   alert('<');
  } else if (otvet < key) {
@@ -5616,7 +5616,9 @@ if (zarazh < 2) {
 
    
   vzlom = false;
- }else{
+
+ } else {
+  otvet = kod;
  };
 } else { 
 alert('Вы попытались поковырять в замке, но поняли, что своим щупальцем у вас получится поковырять только в анальном проходе.')
@@ -5631,7 +5633,7 @@ if (zarazh < 2) {
   koda = key;
  } else {
  };
- otvet = prompt(`Здесь установлен кодовый замок. Для открытия необходимо подобрать код от ${kodemin} до ${kodemax}`, `${koda}`); 
+ otvet = prompt(`Здесь установлен кодовый замок. Для открытия необходимо подобрать код от ${kodemin} до ${kodemax}\n(чтобы прекратить взлом, введите любое нечисловое значение)`, `${koda}`); 
  if (otvet > key) {
   alert('<');
  } else if (otvet < key) {
@@ -5800,6 +5802,7 @@ if (zarazh < 2) {
   };
   vzlom = false;
  } else {
+  otvet = kod;
  };
 } else { 
 alert('Вы попытались поковырять в замке, но поняли, что своим щупальцем у вас получится поковырять только в анальном проходе.')
