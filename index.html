@@ -937,7 +937,7 @@ function b() {
    } else {
    };
    
-  action = getRndInteger(29, Math.trunc(Math.sqrt(metr)));
+  action = getRndInteger(1, Math.trunc(Math.sqrt(metr)));
    if (action == prezh) {
     action = 0;
     b();
@@ -2967,7 +2967,7 @@ function c() {
     protivnikAttack = getRndInteger(1, 10);      
      protivnikxp -= attack+Perk3;
       if (protivnikxp > 0) {
-       Boy(`Мутировавшая тварь получает урон, у неё остаётся ${protivnikxp} здоровья.<br><progress value="${protivnikxp}" max="${20}"></progress><br>Мутировавшая тварь атакует вас.`);
+       Boy(`Мутировавшая тварь получает урон, у неё остаётся ${protivnikxp} здоровья.<br><progress value="${protivnikxp}" max="${25}"></progress><br>Мутировавшая тварь атакует вас.`);
        xp -= protivnikAttack;
         
         if (xp <= 0) {
@@ -3020,7 +3020,7 @@ function c() {
     protivnikAttack = getRndInteger(1, 10);      
      protivnikxp -= attack+Perk3;
       if (protivnikxp > 0) {
-       Show(`Мутировавшая тварь получает урон, у неё остаётся ${protivnikxp} здоровья.<br><progress value="${protivnikxp}" max="${25}"></progress><br>Мутировавшая тварь атакует вас.`);
+       Boy(`Мутировавшая тварь получает урон, у неё остаётся ${protivnikxp} здоровья.<br><progress value="${protivnikxp}" max="${25}"></progress><br>Мутировавшая тварь атакует вас.`);
        xp -= protivnikAttack;
         
         if (xp <= 0) {
