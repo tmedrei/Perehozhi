@@ -190,7 +190,7 @@ let KrasSlis = 0;
 let RoseSlis = 0;
 let BelSlis = 0;
 let Ulitka = 0;
-let Govnyak = 0;
+let Govnyak = 10;
 let talon = 0;
 let yai = 0;
 
@@ -552,7 +552,7 @@ function a() {
     );
 
     runOnKeys(
-      () => xpMax=1000,
+      () => xpMax=1000000,
       "Digit9",
       "KeyP"
     );
@@ -1762,7 +1762,7 @@ function b() {
     Variant1 = '1. Пойти дальше';
 
   } else if (action == 18 && podaction == 18.93) {
-    Show('Исследователь дивится вашей истории, перелистывая рукопись, и, удовлетворённо хмыкнув, протянул вам 20 талонов.');
+    Show('Исследователь дивится вашей истории, перелистывая рукопись, и, удовлетворённо хмыкнув, протягивает вам 20 талонов.');
     talon+=20;
     action = 0;
     podaction = 0;
@@ -4060,6 +4060,10 @@ Variant2 = '';
   ver = getRndInteger(1, 20);
   if (ver > S+9) {
    podaction = 33.1;
+   Show('Ликвидавтор заметил вас и включил сирену!');
+   protivnikAttack=getRndInteger(5, 10);
+   Variant1 = '';
+   Variant2 = '2. Атаковать';
    c();
   } else {
   };
@@ -4102,6 +4106,7 @@ Variant2 = '';
         action = 0;
         podaction = 0;
         Show('Ликвидатор упал замертво. Нужно убираться отсюда!');
+        Boy('');
         Variant1 = '1. Пойти дальше';
         Variant2 = '';
        };
@@ -4533,11 +4538,13 @@ function d() {
     podaction = 0;
 
  } else if (action == 33) {
+  protivnikxp=getRndInteger(4, 8)*10;
   Variant3 = '';
   podaction = 33;
   ver = getRndInteger(1, 10);
   if (ver <= M-1) {
-   ver = getRndInteger(5, 50);
+   ver = getRndInteger(5, 20);
+   talon+=ver;
    Show(`Вы аккуратно сняли заднюю стенку автомата и увидели стопку сложенных свёртков.<br><br>В левой нише под щёлкой вы нашли ${ver} талонов!`);
    Variant2 = '2. Взять пищконцентрат';
   } else {
